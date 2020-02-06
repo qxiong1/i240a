@@ -1,0 +1,836 @@
+Script started on 2020-02-06 10:36:53-05:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="80" LINES="24"]
+qxiong1@remote00:~/i240a/work/lab2$ cd i240[K[K[K[K[K[K[Kls
+lab2.log
+qxiong1@remote00:~/i240a/work/lab2$ cp -r ~/cs240/labs/lab2/exercises/* .
+qxiong1@remote00:~/i240a/work/lab2$ ls
+1-hello  2-hello  3-overload  lab2.log	Makefile
+qxiong1@remote00:~/i240a/work/lab2$ cd e[K[K[K[K1-hello/
+bash: 1-hello/: Is a directory
+qxiong1@remote00:~/i240a/work/lab2$ s[Kcd 1-hello/
+qxiong1@remote00:~/i240a/work/lab2/1-hello$ ls
+hello.cc  Makefile  README
+qxiong1@remote00:~/i240a/work/lab2/1-hello$ ls -l
+total 12
+-rw-r----- 1 qxiong1 qxiong1 363 Feb  6 10:37 hello.cc
+-rw-r----- 1 qxiong1 qxiong1  39 Feb  6 10:37 Makefile
+-rw-r----- 1 qxiong1 qxiong1  61 Feb  6 10:37 README
+qxiong1@remote00:~/i240a/work/lab2/1-hello$ make
+g++ -g -Wall -std=c++17    hello.cc   -o hello
+qxiong1@remote00:~/i240a/work/lab2/1-hello$ ./hello
+usage: ./hello NAME...
+qxiong1@remote00:~/i240a/work/lab2/1-hello$ ./hello bart lisa
+hello bart
+hello lisa
+hello qxiong1@remote00:~/i240a/work/lab2/1-hello$ helo[Klo $[K[K[K[K[K[K[Kh[Khello bard[K[Krt
+bash: hello: command not found
+qxiong1@remote00:~/i240a/work/lab2/1-hello$ ./hello ab[K[Kbart
+hello bart
+hello qxiong1@remote00:~/i240a/work/lab2/1-hello$ ./hello bart[K[K[K[Klisa
+hello lisa
+hello qxiong1@remote00:~/i240a/work/lab2/1-hello$ ./hello lisa[K[K[K[K$
+hello $
+hello qxiong1@remote00:~/i240a/work/lab2/1-hello$ gdb hello
+GNU gdb (Debian 8.2.1-2+b3) 8.2.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from hello...done.
+(gdb) start bart lisa
+Temporary breakpoint 1 at 0x11cd: file hello.cc, line 13.
+Starting program: /import/linux/home1/qxiong1/projects/i240a/work/lab2/1-hello/hello bart lisa
+
+Temporary breakpoint 1, main (argc=3, argv=0x7fffffffe898) at hello.cc:13
+13	  if (argc == 1) {
+(gdb) l
+8	}
+9	
+10	int 
+11	main(int argc, const char *argv[])
+12	{
+13	  if (argc == 1) {
+14	    std::cerr << "usage: " << argv[0] << " NAME..." << std::endl;
+15	    std::exit(1);
+16	  }
+17	  else {
+(gdb) 
+18	    for (int i = 1; i <= argc; i++) {
+19	      sayHello(argv[i]);
+20	    }
+21	  }
+22	}
+(gdb) b sayHello(char const*) [K[K[K[K[K[K[K[K[K[K[K[K[K[K
+Breakpoint 2 at 0x555555555181: file hello.cc, line 7.
+(gdb) p argc
+$1 = 3
+(gdb) p arv[Kgv
+$2 = (const char **) 0x7fffffffe898
+(gdb) p argcv[K[Kv[0]
+$3 = 0x7fffffffeb02 "/import/linux/home1/qxiong1/projects/i240a/work/lab2/1-hello/hello"
+(gdb) p argv[0][C[1P]1]
+$4 = 0x7fffffffeb45 "bart"
+(gdb) p argv[1][1P]2]
+$5 = 0x7fffffffeb4a "lisa"
+(gdb) p argcv[K[Kv@2[K3
+$6 = {0x7fffffffe898, 0x355555090, 0x7fffffffe890}
+(gdb) p argv@3*argv@3
+$7 = {
+  0x7fffffffeb02 "/import/linux/home1/qxiong1/projects/i240a/work/lab2/1-hello/hello", 0x7fffffffeb45 "bart", 0x7fffffffeb4a "lisa"}
+(gdb) n
+18	    for (int i = 1; i <= argc; i++) {
+(gdb) n
+19	      sayHello(argv[i]);
+(gdb) i[Kp i
+$8 = 1
+(gdb)  [Kc sayHello(char const*) 
+Not stopped at any breakpoint; argument ignored.
+Continuing.
+
+Breakpoint 2, sayHello (name=0x7fffffffeb45 "bart") at hello.cc:7
+7	  std::cout << "hello " << name << std::endl;
+(gdb) l
+2	#include <cstdlib>
+3	
+4	static void
+5	sayHello(const char *name)
+6	{
+7	  std::cout << "hello " << name << std::endl;
+8	}
+9	
+10	int 
+11	main(int argc, const char *argv[])
+(gdb) backtrace
+#0  sayHello (name=0x7fffffffeb45 "bart") at hello.cc:7
+#1  0x0000555555555257 in main (argc=3, argv=0x7fffffffe898) at hello.cc:19
+(gdb) p argc
+No symbol "argc" in current context.
+(gdb) up
+#1  0x0000555555555257 in main (argc=3, argv=0x7fffffffe898) at hello.cc:19
+19	      sayHello(argv[i]);
+(gdb) p argc
+$9 = 3
+(gdb) p i
+$10 = 1
+(gdb) c [K.sayHello(char const*) [1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1@l[1@i[1@s[1@a
+A syntax error in expression, near `.sayHello(lisa)'.
+(gdb) c.sayHello(lisa) [C[C[C[C[C[C[Kc.sayHello(char const*) lisa
+A syntax error in expression, near `.sayHello(char const*) lisa'.
+(gdb) c.sayHello(char const*) lisa[11Plisa) char const*) lisa[K[K[K[K[K
+A syntax error in expression, near `.sayHello(char const*)'.
+(gdb) c.ss[KayHello(char const*) [C[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P
+A syntax error in expression, near `.sayHello()'.
+(gdb) c
+Continuing.
+hello bart
+
+Breakpoint 2, sayHello (name=0x7fffffffeb4a "lisa") at hello.cc:7
+7	  std::cout << "hello " << name << std::endl;
+(gdb) sayHe[K[K[K[K[Kc
+Continuing.
+hello lisa
+
+Breakpoint 2, sayHello (name=0x0) at hello.cc:7
+7	  std::cout << "hello " << name << std::endl;
+(gdb) [K(gdb) [K(gdb) [K(gdb) [K(gdb) [K(gdb) [K(gdb) [K(gdb) [K(gdb) [K(gdb) [K(gdb) [K(gdb) [K(gdb) [K(gdb) [K(gdb) [K(gdb) [K(gdb) [K(gdb) [K(gdb) pri[K[Krint i
+No symbol "i" in current context.
+(gdb) p i
+No symbol "i" in current context.
+(gdb) p argc
+No symbol "argc" in current context.
+(gdb) up
+#1  0x0000555555555257 in main (argc=3, argv=0x7fffffffe898) at hello.cc:19
+19	      sayHello(argv[i]);
+(gdb) print c
+$11 = {i = {0, 1072693248}, d = 1}
+(gdb) print i[Kargc
+$12 = 3
+(gdb) print i
+$13 = 3
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [process 3300636] will be killed.
+
+Quit anyway? (y or n) y
+qxiong1@remote00:~/i240a/work/lab2/1-hello$ v[Kls
+hello  hello.cc  Makefile  README
+qxiong1@remote00:~/i240a/work/lab2/1-hello$ vim hello.cc
+[?1000h[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;25r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[25;1H"hello.cc" 22L, 363C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;1H[35m#include [m[31m<iostream>[m
+[35m#include [m[31m<cstdlib>[m
+
+[32mstatic[m [32mvoid[m
+sayHello([32mconst[m [32mchar[m *name)
+{
+  std::cout << [31m"hello "[m << name << std::endl;
+}
+
+[32mint[m
+main([32mint[m argc, [32mconst[m [32mchar[m *argv[])
+{
+  [38;5;130mif[m (argc == [31m1[m) {
+    std::cerr << [31m"usage: "[m << argv[[31m0[m] << [31m" NAME..."[m << std::endl;
+    std::exit([31m1[m);
+  }
+  [38;5;130melse[m {
+    [38;5;130mfor[m ([32mint[m i = [31m1[m; i <= argc; i++) {[19;7HsayHello(argv[i]);
+    }
+  }
+}
+[94m~                                                                                                          [24;1H~                                                                                                          [m[25;90H1,1[11CAll[1;1H[?25h[?1000l[?1006h[?1002h[?1006l[?1002l[?1006h[?1002h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m#include [m[95m<iostream>[m
+[38;5;81m#include [m[95m<cstdlib>[m
+
+[38;5;121mstatic[m [38;5;121mvoid[m
+sayHello([38;5;121mconst[m [38;5;121mchar[m *name)
+{
+  std::cout << [95m"hello "[m << name << std::endl;
+}
+
+[38;5;121mint[m
+main([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])
+{
+  [93mif[m (argc == [95m1[m) {
+    std::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;
+    std::exit([95m1[m);
+  }
+  [93melse[m {
+    [93mfor[m ([38;5;121mint[m i = [95m1[m; i <= argc; i++) {[19;7HsayHello(argv[i]);
+    }
+  }
+}
+[94m~                                                                                                          [24;1H~                                                                                                          [m[25;90H1,1[11CAll"hello.cc" 22L, 363C[1;1H[?25h[?25l[25;91H8,25[18;25H[?25h[?25l[25;80Hi[18;25H[25;80H [18;25H[25;1H[1m-- INSERT --[m[25;13H[K[25;90H18,25[9CAll[18;25H[?25h[?25l argc; i++) {[18;37H[K[25;94H4[18;24H[?25h[?25l[95m3[m argc; i++) {[25;94H5[18;25H[?25h[25;1H[K[18;24H[?25l[25;80H^[[18;24H[25;80H  [18;25H[25;90H18,24[9CAll[18;24H[?25h[?25l[25;80H:[18;24H[25;80H[K[25;1H:[?2004h[?25hw[?25l[?25hq[?25l[?25h[?25l[?1006l[?1002l[?2004l"hello.cc" 22L, 363C written[23;2t[23;1t[22;2t[22;1t[23;2t[23;1t
+[?2004l[?1l>[?25h[?1049l[23;0;0tqxiong1@remote00:~/i240a/work/lab2/1-hello$ make
+g++ -g -Wall -std=c++17    hello.cc   -o hello
+[01m[Khello.cc:[m[K In function ‘[01m[Kint main(int, const char**)[m[K’:
+[01m[Khello.cc:18:25:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[Kargc[m[K’
+     for (int i = 1; i <3[01;31m[K [m[K[32m[Kargc[m[K; i++) {
+                         [01;31m[K^[m[K[32m[K~~~~[m[K
+                         [32m[K;[m[K
+[01m[Khello.cc:18:26:[m[K [01;35m[Kwarning: [m[Kfor increment expression has no effect [[01;35m[K-Wunused-value[m[K]
+     for (int i = 1; i <3 [01;35m[Kargc[m[K; i++) {
+                          [01;35m[K^~~~[m[K
+[01m[Khello.cc:18:30:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K)[m[K’ before ‘[01m[K;[m[K’ token
+     for [34m[K([m[Kint i = 1; i <3 argc[01;31m[K;[m[K i++) {
+         [34m[K~[m[K                    [01;31m[K^[m[K
+                              [32m[K)[m[K
+[01m[Khello.cc:18:5:[m[K [01;35m[Kwarning: [m[Kthis ‘[01m[Kfor[m[K’ clause does not guard... [[01;35m[K-Wmisleading-indentation[m[K]
+     [01;35m[Kfor[m[K (int i = 1; i <3 argc; i++) {
+     [01;35m[K^~~[m[K
+[01m[Khello.cc:18:32:[m[K [01;36m[Knote: [m[K...this statement, but the latter is misleadingly indented as if it were guarded by the ‘[01m[Kfor[m[K’
+     for (int i = 1; i <3 argc; [01;36m[Ki[m[K++) {
+                                [01;36m[K^[m[K
+[01m[Khello.cc:18:32:[m[K [01;31m[Kerror: [m[K‘[01m[Ki[m[K’ was not declared in this scope
+[01m[Khello.cc:[m[K At global scope:
+[01m[Khello.cc:5:1:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid sayHello(const char*)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+ [01;35m[KsayHello[m[K(const char *name)
+ [01;35m[K^~~~~~~~[m[K
+make: *** [<builtin>: hello] Error 1
+qxiong1@remote00:~/i240a/work/lab2/1-hello$ vim hello.cc
+[?1000h[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;25r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[25;1H"hello.cc" 22L, 363C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;1H[35m#include [m[31m<iostream>[m
+[35m#include [m[31m<cstdlib>[m
+
+[32mstatic[m [32mvoid[m
+sayHello([32mconst[m [32mchar[m *name)
+{
+  std::cout << [31m"hello "[m << name << std::endl;
+}
+
+[32mint[m
+main([32mint[m argc, [32mconst[m [32mchar[m *argv[])
+{
+  [38;5;130mif[m (argc == [31m1[m) {
+    std::cerr << [31m"usage: "[m << argv[[31m0[m] << [31m" NAME..."[m << std::endl;
+    std::exit([31m1[m);
+  }
+  [38;5;130melse[m {
+    [38;5;130mfor[m ([32mint[m i = [31m1[m; i <[31m3[m argc; i++) {[19;7HsayHello(argv[i]);
+    }
+  }
+}
+[94m~                                                                                                          [24;1H~                                                                                                          [m[25;90H18,24[9CAll[18;24H[?25h[?1000l[?1006h[?1002h[?1006l[?1002l[?1006h[?1002h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m#include [m[95m<iostream>[m
+[38;5;81m#include [m[95m<cstdlib>[m
+
+[38;5;121mstatic[m [38;5;121mvoid[m
+sayHello([38;5;121mconst[m [38;5;121mchar[m *name)
+{
+  std::cout << [95m"hello "[m << name << std::endl;
+}
+
+[38;5;121mint[m
+main([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])
+{
+  [93mif[m (argc == [95m1[m) {
+    std::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;
+    std::exit([95m1[m);
+  }
+  [93melse[m {
+    [93mfor[m ([38;5;121mint[m i = [95m1[m; i <[95m3[m argc; i++) {[19;7HsayHello(argv[i]);
+    }
+  }
+}
+[94m~                                                                                                          [24;1H~                                                                                                          [m[25;90H18,24[9CAll"hello.cc" 22L, 363C[18;24H[?25h[?25l[25;80Hi[18;24H[25;80H [18;24H[25;1H[1m-- INSERT --[m[25;13H[K[25;90H18,24[9CAll[18;24H[?25h[?25l [95m3[m argc; i++) {[25;94H5[18;25H[?25h[?25l[95m3[m argc; i++) {[18;38H[K[25;94H4[18;24H[?25h[?25l=[95m3[m argc; i++) {[25;94H5[18;25H[?25h[?25l [95m3[m argc; i++) {[25;94H6[18;26H[?25h[25;1H[K[18;25H[?25l[25;80H^[[18;25H[25;80H  [18;26H[25;90H18,25[9CAll[18;25H[?25h[?25l[25;80H:[18;25H[25;80H[K[25;1H:[?2004h[?25hw[?25l[?25hq[?25l[?25h[?25l[?1006l[?1002l[?2004l"hello.cc" 22L, 365C written[23;2t[23;1t[22;2t[22;1t[23;2t[23;1t
+[?2004l[?1l>[?25h[?1049l[23;0;0tqxiong1@remote00:~/i240a/work/lab2/1-hello$ make
+g++ -g -Wall -std=c++17    hello.cc   -o hello
+[01m[Khello.cc:[m[K In function ‘[01m[Kint main(int, const char**)[m[K’:
+[01m[Khello.cc:18:27:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[Kargc[m[K’
+     for (int i = 1; i <= 3[01;31m[K [m[K[32m[Kargc[m[K; i++) {
+                           [01;31m[K^[m[K[32m[K~~~~[m[K
+                           [32m[K;[m[K
+[01m[Khello.cc:18:28:[m[K [01;35m[Kwarning: [m[Kfor increment expression has no effect [[01;35m[K-Wunused-value[m[K]
+     for (int i = 1; i <= 3 [01;35m[Kargc[m[K; i++) {
+                            [01;35m[K^~~~[m[K
+[01m[Khello.cc:18:32:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K)[m[K’ before ‘[01m[K;[m[K’ token
+     for [34m[K([m[Kint i = 1; i <= 3 argc[01;31m[K;[m[K i++) {
+         [34m[K~[m[K                      [01;31m[K^[m[K
+                                [32m[K)[m[K
+[01m[Khello.cc:18:5:[m[K [01;35m[Kwarning: [m[Kthis ‘[01m[Kfor[m[K’ clause does not guard... [[01;35m[K-Wmisleading-indentation[m[K]
+     [01;35m[Kfor[m[K (int i = 1; i <= 3 argc; i++) {
+     [01;35m[K^~~[m[K
+[01m[Khello.cc:18:34:[m[K [01;36m[Knote: [m[K...this statement, but the latter is misleadingly indented as if it were guarded by the ‘[01m[Kfor[m[K’
+     for (int i = 1; i <= 3 argc; [01;36m[Ki[m[K++) {
+                                  [01;36m[K^[m[K
+[01m[Khello.cc:18:34:[m[K [01;31m[Kerror: [m[K‘[01m[Ki[m[K’ was not declared in this scope
+[01m[Khello.cc:[m[K At global scope:
+[01m[Khello.cc:5:1:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid sayHello(const char*)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+ [01;35m[KsayHello[m[K(const char *name)
+ [01;35m[K^~~~~~~~[m[K
+make: *** [<builtin>: hello] Error 1
+qxiong1@remote00:~/i240a/work/lab2/1-hello$ vim hello.cc
+[?1000h[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;25r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[25;1H"hello.cc" 22L, 365C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;1H[35m#include [m[31m<iostream>[m
+[35m#include [m[31m<cstdlib>[m
+
+[32mstatic[m [32mvoid[m
+sayHello([32mconst[m [32mchar[m *name)
+{
+  std::cout << [31m"hello "[m << name << std::endl;
+}
+
+[32mint[m
+main([32mint[m argc, [32mconst[m [32mchar[m *argv[])
+{
+  [38;5;130mif[m (argc == [31m1[m) {
+    std::cerr << [31m"usage: "[m << argv[[31m0[m] << [31m" NAME..."[m << std::endl;
+    std::exit([31m1[m);
+  }
+  [38;5;130melse[m {
+    [38;5;130mfor[m ([32mint[m i = [31m1[m; i <= [31m3[m argc; i++) {[19;7HsayHello(argv[i]);
+    }
+  }
+}
+[94m~                                                                                                          [24;1H~                                                                                                          [m[25;90H18,25[9CAll[18;25H[?25h[?1000l[?1006h[?1002h[?1006l[?1002l[?1006h[?1002h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m#include [m[95m<iostream>[m
+[38;5;81m#include [m[95m<cstdlib>[m
+
+[38;5;121mstatic[m [38;5;121mvoid[m
+sayHello([38;5;121mconst[m [38;5;121mchar[m *name)
+{
+  std::cout << [95m"hello "[m << name << std::endl;
+}
+
+[38;5;121mint[m
+main([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])
+{
+  [93mif[m (argc == [95m1[m) {
+    std::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;
+    std::exit([95m1[m);
+  }
+  [93melse[m {
+    [93mfor[m ([38;5;121mint[m i = [95m1[m; i <= [95m3[m argc; i++) {[19;7HsayHello(argv[i]);
+    }
+  }
+}
+[94m~                                                                                                          [24;1H~                                                                                                          [m[25;90H18,25[9CAll"hello.cc" 22L, 365C[18;25H[?25h[?25l[25;80Hi[18;25H[25;80H [18;25H[25;1H[1m-- INSERT --[m[25;13H[K[25;90H18,25[9CAll[18;25H[?25h[?25l[25;94H6[18;26H[?25h[?25l[25;94H7[18;27H[?25h[?25l argc; i++) {[18;39H[K[25;94H6[18;26H[?25h[?25largc; i++) {[18;38H[K[25;94H5[18;25H[?25h[?25l  argc; i++) {[25;94H6[18;26H[?25h[?25largc; i++) {[18;38H[K[25;94H5[18;25H[?25h[?25l argc; i++) {[18;37H[K[25;94H4[18;24H[?25h[?25l  argc; i++) {[25;94H5[18;25H[?25h[?25largc; i++) {[18;37H[K[25;94H4[18;24H[?25h[25;1H[K[18;23H[?25l[25;80H^[[18;23H[25;80H  [18;24H[25;90H18,23[9CAll[18;23H[?25h[?25l[25;80H:[18;23H[25;80H[K[25;1H:[?2004h[?25hw[?25l[?25hq[?25l[?25h[?25l[?1006l[?1002l[?2004l"hello.cc" 22L, 362C written[23;2t[23;1t[22;2t[22;1t[23;2t[23;1t
+[?2004l[?1l>[?25h[?1049l[23;0;0tqxiong1@remote00:~/i240a/work/lab2/1-hello$ make
+g++ -g -Wall -std=c++17    hello.cc   -o hello
+qxiong1@remote00:~/i240a/work/lab2/1-hello$ gdb [K[K[K[K./hello bart lisa
+hello bart
+hello lisa
+qxiong1@remote00:~/i240a/work/lab2/1-hello$ ./hello bart lisa[K[K[K[K[K[Kt
+hello bart
+qxiong1@remote00:~/i240a/work/lab2/1-hello$ ./hello bart[K[K[K[K[K lisa
+hello lisa
+qxiong1@remote00:~/i240a/work/lab2/1-hello$ ./hello lisa[K[K[K[K@[K$
+hello $
+qxiong1@remote00:~/i240a/work/lab2/1-hello$ v[Kgdb hello
+GNU gdb (Debian 8.2.1-2+b3) 8.2.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from hello...done.
+(gdb) start bart lisa
+Temporary breakpoint 1 at 0x11cd: file hello.cc, line 13.
+Starting program: /import/linux/home1/qxiong1/projects/i240a/work/lab2/1-hello/hello bart lisa
+
+Temporary breakpoint 1, main (argc=3, argv=0x7fffffffe898) at hello.cc:13
+13	  if (argc == 1) {
+(gdb) c
+Continuing.
+hello bart
+hello lisa
+[Inferior 1 (process 3302085) exited normally]
+(gdb) c[Khe[K[Kstart ab[K[Kbart lisa
+Temporary breakpoint 2 at 0x5555555551cd: file hello.cc, line 13.
+Starting program: /import/linux/home1/qxiong1/projects/i240a/work/lab2/1-hello/hello bart lisa
+
+Temporary breakpoint 2, main (argc=3, argv=0x7fffffffe898) at hello.cc:13
+13	  if (argc == 1) {
+(gdb) l
+8	}
+9	
+10	int 
+11	main(int argc, const char *argv[])
+12	{
+13	  if (argc == 1) {
+14	    std::cerr << "usage: " << argv[0] << " NAME..." << std::endl;
+15	    std::exit(1);
+16	  }
+17	  else {
+(gdb) 
+18	    for (int i = 1; i < argc; i++) {
+19	      sayHello(argv[i]);
+20	    }
+21	  }
+22	}
+(gdb) b sayHello(char const*) 
+Breakpoint 3 at 0x555555555181: file hello.cc, line 7.
+(gdb) p argc
+$1 = 3
+(gdb) p i
+No symbol "i" in current context.
+(gdb) p argc[Kv
+$2 = (const char **) 0x7fffffffe898
+(gdb) p at[Krgv[0]
+$3 = 0x7fffffffeb01 "/import/linux/home1/qxiong1/projects/i240a/work/lab2/1-hello/hello"
+(gdb) [[Kp argv[1]
+$4 = 0x7fffffffeb44 "bart"
+(gdb) p argv[2]
+$5 = 0x7fffffffeb49 "lisa"
+(gdb) p argv[3]
+$6 = 0x0
+(gdb) p argv@3
+$7 = {0x7fffffffe898, 0x355555090, 0x7fffffffe890}
+(gdb) p argv@3*argv@3
+$8 = {0x7fffffffeb01 "/import/linux/home1/qxiong1/projects/i240a/work/lab2/1-hello/hello", 
+  0x7fffffffeb44 "bart", 0x7fffffffeb49 "lisa"}
+(gdb) n
+18	    for (int i = 1; i < argc; i++) {
+(gdb) n
+19	      sayHello(argv[i]);
+(gdb) p i
+$9 = 1
+(gdb) p argc
+$10 = 3
+(gdb) c
+Continuing.
+
+Breakpoint 3, sayHello (name=0x7fffffffeb44 "bart") at hello.cc:7
+7	  std::cout << "hello " << name << std::endl;
+(gdb) p [K[Kl
+2	#include <cstdlib>
+3	
+4	static void
+5	sayHello(const char *name)
+6	{
+7	  std::cout << "hello " << name << std::endl;
+8	}
+9	
+10	int 
+11	main(int argc, const char *argv[])
+(gdb) 
+12	{
+13	  if (argc == 1) {
+14	    std::cerr << "usage: " << argv[0] << " NAME..." << std::endl;
+15	    std::exit(1);
+16	  }
+17	  else {
+18	    for (int i = 1; i < argc; i++) {
+19	      sayHello(argv[i]);
+20	    }
+21	  }
+(gdb) 
+22	}
+(gdb) backtrace 
+#0  sayHello (name=0x7fffffffeb44 "bart") at hello.cc:7
+#1  0x0000555555555257 in main (argc=3, argv=0x7fffffffe898) at hello.cc:19
+(gdb) p i[Kargv[Kc
+No symbol "argc" in current context.
+(gdb) p i
+No symbol "i" in current context.
+(gdb) up
+#1  0x0000555555555257 in main (argc=3, argv=0x7fffffffe898) at hello.cc:19
+19	      sayHello(argv[i]);
+(gdb) p argc
+$11 = 3
+(gdb) p i
+$12 = 1
+(gdb) down
+#0  sayHello (name=0x7fffffffeb44 "bart") at hello.cc:7
+7	  std::cout << "hello " << name << std::endl;
+(gdb) p i
+No symbol "i" in current context.
+(gdb) up
+#1  0x0000555555555257 in main (argc=3, argv=0x7fffffffe898) at hello.cc:19
+19	      sayHello(argv[i]);
+(gdb) p i
+$13 = 1
+(gdb) p argc
+$14 = 3
+(gdb) x[Kc
+Continuing.
+hello bart
+
+Breakpoint 3, sayHello (name=0x7fffffffeb49 "lisa") at hello.cc:7
+7	  std::cout << "hello " << name << std::endl;
+(gdb) c
+Continuing.
+hello lisa
+[Inferior 1 (process 3302121) exited normally]
+(gdb) q
+qxiong1@remote00:~/i240a/work/lab2/1-hello$ cd ..
+qxiong1@remote00:~/i240a/work/lab2$ cd 1[K[K[K[Kls
+1-hello  2-hello  3-overload  lab2.log	Makefile
+qxiong1@remote00:~/i240a/work/lab2$ cd 2-hello/
+qxiong1@remote00:~/i240a/work/lab2/2-hello$ ls
+hello.cc  Makefile  README
+qxiong1@remote00:~/i240a/work/lab2/2-hello$ make
+g++ -g -Wall -std=c++17    hello.cc   -o hello
+qxiong1@remote00:~/i240a/work/lab2/2-hello$ ./hello lisa bart
+Hello Lisa
+Hello Bart
+Segmentation fault
+qxiong1@remote00:~/i240a/work/lab2/2-hello$ ./hello li[K[K[K "[K'lisa simpton[K[K[Kson' 'bart simpson'
+Hello Lisa Simpson�U
+Hello Bart Simpson�U
+Segmentation fault
+qxiong1@remote00:~/i240a/work/lab2/2-hello$ hello[K[K[K[K[Kvim hello.cc
+[?1000h[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;25r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[25;1H"hello.cc" 48L, 1011C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;1H[35m#include [m[31m<locale>[m
+[35m#include [m[31m<iostream>[m
+[35m#include [m[31m<cstdlib>[m
+[35m#include [m[31m<cstring>[m
+
+[34m/** Upcase the initial letter of each word from in, copying the
+ *  results into out.  The caller is responsible to ensure that out
+ *  has enough space for the strlen(in) characters of in.
+ */[m
+[32mvoid[m
+upcaseWords([32mconst[m [32mchar[m in[], [32mchar[m out[])
+{
+  [32mbool[m inWord = [31mfalse[m;
+  [32mconst[m [32mint[m n = std::strlen(in);
+  [38;5;130mfor[m ([32mint[m i = [31m0[m; i < n; i++) {
+    [38;5;130mif[m (!inWord && std::isalpha(in[i])) {[17;7Hout[i] = std::toupper(in[i]);
+    }
+    [38;5;130melse[m {[20;7Hout[i] = in[i];
+    }
+    inWord = std::isalpha(in[i]);
+  }
+}[25;90H1,1[11CTop[1;1H[?25h[?1000l[?1006h[?1002h[?1006l[?1002l[?1006h[?1002h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m#include [m[95m<locale>[m
+[38;5;81m#include [m[95m<iostream>[m
+[38;5;81m#include [m[95m<cstdlib>[m
+[38;5;81m#include [m[95m<cstring>[m
+
+[96m/** Upcase the initial letter of each word from in, copying the
+ *  results into out.  The caller is responsible to ensure that out
+ *  has enough space for the strlen(in) characters of in.
+ */[m
+[38;5;121mvoid[m
+upcaseWords([38;5;121mconst[m [38;5;121mchar[m in[], [38;5;121mchar[m out[])
+{
+  [38;5;121mbool[m inWord = [95mfalse[m;
+  [38;5;121mconst[m [38;5;121mint[m n = std::strlen(in);
+  [93mfor[m ([38;5;121mint[m i = [95m0[m; i < n; i++) {
+    [93mif[m (!inWord && std::isalpha(in[i])) {[17;7Hout[i] = std::toupper(in[i]);
+    }
+    [93melse[m {[20;7Hout[i] = in[i];
+    }
+    inWord = std::isalpha(in[i]);
+  }
+}[25;90H1,1[11CTop"hello.cc" 48L, 1011C[1;1H[?25h[?25l[25;91H4,17[14;17H[?25h[?25l[15;31H[46m{[23;3H}[m[25;91H5,31[15;31H[?25h[?25l{[16;41H[46m{[18;5H}[m[23;3H}[25;91H8,5 [18;5H[?25h[?25l[16;41H{[18;5H}[25;91H5,21[15;21H[?25h[?25l[25;94H2[15;22H[?25h[?25l[25;80Hi[15;22H[25;80H [15;22H[25;1H[1m-- INSERT --[m[25;13H[K[25;90H15,22[9CTop[15;22H[?25h[?25l= n; i++) {[25;94H3[15;23H[?25h[?25l[1;24r[1;1H[3M[1;25r[23;1H[38;5;121mstatic[m [38;5;121mvoid[m
+sayHello([38;5;121mconst[m [38;5;121mchar[m *name)[25;90H[K[25;90H15,23[9C12%[12;23H[?25h[?25l[1;24r[1;1H[3M[1;25r[22;1H{
+  std::cout << [95m"Hello "[m << name << std::endl;
+}[25;90H[K[25;90H15,23[9C25%[9;23H[?25h[?25l[1;24r[1;1H[3M[1;25r[24;1H[38;5;121mint[m[25;90H[K[25;90H15,23[9C37%[6;23H[?25h[?25l[1;24r[1;1H[3M[1;25r[22;1Hmain([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])
+{
+  [93mif[m (argc == [95m1[m) {[25;90H[K[25;90H18,6[10C50%[4;41H[46m{[6;5H}[?25h[?25l[1;24r[m[1;1H[3M[1;25r[22;5Hstd::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;
+    std::exit([95m1[m);
+  }[25;90H[K[25;90H21,6[10C62%[1;41H{[3;5H}[4;10H[46m{[6;5H}[?25h[?25l[1;24r[m[1;1H[6M[1;25r[19;3H[93melse[m {
+    [93mfor[m ([38;5;121mint[m i = [95m1[m; i <= argc; i++) {[21;7H[38;5;121mconst[m [38;5;121mchar[m *name = argv[i];[22;7H[38;5;121mchar[m friendlyName[strlen(name)];[23;7HupcaseWords(name, friendlyName);[24;7HsayHello(friendlyName);[25;90H[K[25;90H27,23[9C87%[6;23H[?25h[?25l[1;24r[1;1H[3M[1;25r[22;5H}
+  }
+}[25;90H[K[25;90H30,2[10CBot[4;1H[46m{
+
+}[?25h[?25l[1;24r[m[1;1H[3M[1;25r[22;1H[94m~                                                                                                          [23;1H~                                                                                                          [24;1H~                                                                                                          [m[25;90H[K[25;90H33,4[10CBot[1;1H{
+
+}[6;4H[?25h[?25l[1;24r[1;1H[3M[1;25r[22;1H[94m~                                                                                                          [23;1H~                                                                                                          [24;1H~                                                                                                          [m[25;90H[K[25;90H36,19[9CBot[6;18H[46m{[9;3H}[6;19H[?25h[?25l[1;24r[m[1;1H[3M[1;25r[22;1H[94m~                                                                                                          [23;1H~                                                                                                          [24;1H~                                                                                                          [m[25;90H[K[25;90H39,4[10CBot[6;4H[?25h[?25l[1;24r[1;1H[3M[1;25r[22;1H[94m~                                                                                                          [23;1H~                                                                                                          [24;1H~                                                                                                          [m[25;90H[K[25;90H42,23[9CBot[3;3H}[6;23H[?25h[?25l[1;24r[1;1H[3M[1;25r[22;1H[94m~                                                                                                          [23;1H~                                                                                                          [24;1H~                                                                                                          [m[25;90H[K[25;90H45,23[9CBot[6;23H[?25h[?25l[1;24r[1;1H[6M[1;25r[19;1H[94m~                                                                                                          [20;1H~                                                                                                          [21;1H~                                                                                                          [22;1H~                                                                                                          [23;1H~                                                                                                          [24;1H~                                                                                                          [m[25;90H[K[25;90H48,2[10CBot[3;2H[?25h[?25l[1;24r[1;1H[3L[1;25r[1;7H[38;5;121mchar[m friendlyName[strlen(name)];[2;7HupcaseWords(name, friendlyName);[3;7HsayHello(friendlyName);[25;90H[K[25;90H48,2[10CBot[6;2H[?25h[?25l[1;24r[1;1H[3L[1;25r[1;3H[93melse[m {
+    [93mfor[m ([38;5;121mint[m i = [95m1[m; i <= argc; i++) {[3;7H[38;5;121mconst[m [38;5;121mchar[m *name = argv[i];[25;90H[K[25;90H48,2[10CBot[9;2H[?25h[?25l[1;24r[1;1H[3L[1;25r[1;5Hstd::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;
+    std::exit([95m1[m);
+  }[25;90H[K[25;90H48,2[10CBot[12;2H[?25h[?25l[1;24r[1;1H[3L[1;25r[1;1Hmain([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])
+{
+  [93mif[m (argc == [95m1[m) {[25;90H[K[25;90H48,2[10CBot[15;2H[?25h[?25l[1;24r[1;1H[3L[1;25r[3;1H[38;5;121mint[m[25;90H[K[25;90H48,2[10CBot[18;2H[?25h[?25l[1;24r[1;1H[3L[1;25r[1;1H{
+  std::cout << [95m"Hello "[m << name << std::endl;
+}[25;90H[K[25;90H48,2[10CBot[21;2H[?25h[?25l[1;24r[1;1H[6L[1;25r[1;5HinWord = std::isalpha(in[i]);
+  }
+}
+
+[38;5;121mstatic[m [38;5;121mvoid[m
+sayHello([38;5;121mconst[m [38;5;121mchar[m *name)[25;90H[K[25;90H40,9[10C87%[19;9H[?25h[?25l[1;24r[1;1H[3M[1;25r[22;5H}
+  }
+}[25;90H[K[25;90H40,9[10CBot[16;9H[?25h[?25l[25;91H1,25[17;25H[?25h[?25l argc; i++) {[17;37H[K[25;94H4[17;24H[?25h[?25l[1;24r[1;1H[3M[1;25r[22;1H[94m~                                                                                                          [23;1H~                                                                                                          [24;1H~                                                                                                          [m[25;90H[K[25;90H41,24[9CBot[14;24H[?25h[?25l[1;24r[1;1H[3M[1;25r[22;1H[94m~                                                                                                          [23;1H~                                                                                                          [24;1H~                                                                                                          [m[25;90H[K[25;90H41,24[9CBot[11;24H[?25h[?25l[1;24r[1;1H[3L[1;25r[1;1H{
+  std::cout << [95m"Hello "[m << name << std::endl;
+}[25;90H[K[25;90H41,24[9CBot[14;24H[?25h[?25l[1;24r[1;1H[3L[1;25r[2;1H[38;5;121mstatic[m [38;5;121mvoid[m
+sayHello([38;5;121mconst[m [38;5;121mchar[m *name)[25;90H[K[25;90H41,24[9CBot[17;24H[?25h[?25l[1;24r[1;1H[6L[1;25r[1;5H[93melse[m {[2;7Hout[i] = in[i];
+    }
+    inWord = std::isalpha(in[i]);
+  }
+}[25;90H[K[25;90H37,24[9C75%[19;24H[?25h[?25l[1;24r[1;1H[3L[1;25r[1;5H[93mif[m (!inWord && std::isalpha(in[i])) {[2;7Hout[i] = std::toupper(in[i]);
+    }[25;90H[K[25;90H34,24[9C62%[19;24H[?25h[?25l[1;24r[1;1H[3L[1;25r[1;3H[38;5;121mbool[m inWord = [95mfalse[m;
+  [38;5;121mconst[m [38;5;121mint[m n = std::strlen(in);
+  [93mfor[m ([38;5;121mint[m i = [95m0[m; i <= n; i++) {[25;90H[K[25;90H31,1[10C50%[19;1H[?25h[?25l[1;24r[1;1H[6L[1;25r[1;1H[96m *  results into out.  The caller is responsible to ensure that out
+ *  has enough space for the strlen(in) characters of in.
+ */[m
+[38;5;121mvoid[m
+upcaseWords([38;5;121mconst[m [38;5;121mchar[m in[], [38;5;121mchar[m out[])
+{[25;90H[K[25;90H25,1[10C25%[19;1H[?25h[?25l[1;24r[1;1H[6L[1;25r[1;1H[38;5;81m#include [m[95m<locale>[m
+[38;5;81m#include [m[95m<iostream>[m
+[38;5;81m#include [m[95m<cstdlib>[m
+[38;5;81m#include [m[95m<cstring>[m
+
+[96m/** Upcase the initial letter of each word from in, copying the[m[25;90H[K[25;90H19,11[9CTop[19;10H[46m{[21;5H}[19;11H[?25h[?25l[1;24r[m[1;1H[3M[1;25r[23;1H[38;5;121mstatic[m [38;5;121mvoid[m
+sayHello([38;5;121mconst[m [38;5;121mchar[m *name)[25;90H[K[25;90H19,11[9C12%[16;11H[?25h[?25l[1;24r[1;1H[3M[1;25r[22;1H{
+  std::cout << [95m"Hello "[m << name << std::endl;
+}[25;90H[K[25;90H19,11[9C25%[13;11H[?25h[?25l[1;24r[1;1H[3M[1;25r[24;1H[38;5;121mint[m[25;90H[K[25;90H19,11[9C37%[10;11H[?25h[?25l[1;24r[1;1H[3M[1;25r[22;1Hmain([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])
+{
+  [93mif[m (argc == [95m1[m) {[25;90H[K[25;90H19,11[9C50%[7;11H[?25h[?25l[1;24r[1;1H[3M[1;25r[22;5Hstd::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;
+    std::exit([95m1[m);
+  }[25;90H[K[25;90H21,6[10C62%[6;6H[?25h[?25l[1;24r[1;1H[3M[1;25r[22;3H[93melse[m {
+    [93mfor[m ([38;5;121mint[m i = [95m1[m; i < argc; i++) {[24;7H[38;5;121mconst[m [38;5;121mchar[m *name = argv[i];[25;90H[K[25;90H24,2[10C75%[1;10H{[3;5H}[6;2H[?25h[?25l[1;24r[1;1H[3L[1;25r[1;5H[93mif[m (!inWord && std::isalpha(in[i])) {[2;7Hout[i] = std::toupper(in[i]);
+    }[25;90H[K[25;90H24,2[10C62%[9;2H[?25h[?25l[1;24r[1;1H[3M[1;25r[22;3H[93melse[m {
+    [93mfor[m ([38;5;121mint[m i = [95m1[m; i < argc; i++) {[24;7H[38;5;121mconst[m [38;5;121mchar[m *name = argv[i];[25;90H[K[25;90H24,2[10C75%[6;2H[?25h[?25l[1;24r[1;1H[3M[1;25r[22;7H[38;5;121mchar[m friendlyName[strlen(name)];[23;7HupcaseWords(name, friendlyName);[24;7HsayHello(friendlyName);[25;90H[K[25;90H27,24[9C87%[6;24H[?25h[25;1H[K[6;23H[?25l[25;80H^[[6;23H[25;80H  [6;24H[25;90H27,23[9C87%[6;23H[?25h[?25l[25;80H:[6;23H[25;80H[K[25;1H:[?2004h[?25hw[?25l[?25hq[?25l[?25h[?25l[?1006l[?1002l[?2004l"hello.cc" 48L, 1011C written[23;2t[23;1t[22;2t[22;1t[23;2t[23;1t
+[?2004l[?1l>[?25h[?1049l[23;0;0tqxiong1@remote00:~/i240a/work/lab2/2-hello$ make
+g++ -g -Wall -std=c++17    hello.cc   -o hello
+qxiong1@remote00:~/i240a/work/lab2/2-hello$ ./hello lisa bart
+Hello Lisa
+Hello Bart
+qxiong1@remote00:~/i240a/work/lab2/2-hello$ hello [K[K[K[K[K[K./hello 'lisa simpson' ''b'a'r't' 's'i'm'p'l's'[1P'[1P's'o'n'
+Hello Lisa Simpson
+Hello Bart Simpson
+qxiong1@remote00:~/i240a/work/lab2/2-hello$ cd ..
+qxiong1@remote00:~/i240a/work/lab2$ cd 3-overload/
+qxiong1@remote00:~/i240a/work/lab2/3-overload$ vim overload.cc 
+[?1000h[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;25r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[25;1H"overload.cc" 16L, 282C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;1H[35m#include [m[31m<iostream>[m
+
+[32mint[m f([32mint[m *a) { [38;5;130mreturn[m *a * [31m2[m; }
+[32mint[m f([32mint[m a) { [38;5;130mreturn[m a + [31m1[m;}
+[32mint[m f([32mint[m a, [32mint[m b) { [38;5;130mreturn[m a - b; }
+
+[32mint[m
+main() {
+  [32mint[m a = [31m2[m;
+  [32mint[m b = [31m3[m;
+  std::cout
+    << [31m"f(a) = "[m << f(a)
+    << [31m"; f(&a) = "[m << f(&a)
+    << [31m"; f(a, b) = "[m << f(a, b)
+    << std::endl;
+}
+[94m~                                                                                                          [18;1H~                                                                                                          [19;1H~                                                                                                          [20;1H~                                                                                                          [21;1H~                                                                                                          [22;1H~                                                                                                          [23;1H~                                                                                                          [24;1H~                                                                                                          [m[25;90H1,1[11CAll[1;1H[?25h[?1000l[?1006h[?1002h[?1006l[?1002l[?1006h[?1002h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m#include [m[95m<iostream>[m
+
+[38;5;121mint[m f([38;5;121mint[m *a) { [93mreturn[m *a * [95m2[m; }
+[38;5;121mint[m f([38;5;121mint[m a) { [93mreturn[m a + [95m1[m;}
+[38;5;121mint[m f([38;5;121mint[m a, [38;5;121mint[m b) { [93mreturn[m a - b; }
+
+[38;5;121mint[m
+main() {
+  [38;5;121mint[m a = [95m2[m;
+  [38;5;121mint[m b = [95m3[m;
+  std::cout
+    << [95m"f(a) = "[m << f(a)
+    << [95m"; f(&a) = "[m << f(&a)
+    << [95m"; f(a, b) = "[m << f(a, b)
+    << std::endl;
+}
+[94m~                                                                                                          [18;1H~                                                                                                          [19;1H~                                                                                                          [20;1H~                                                                                                          [21;1H~                                                                                                          [22;1H~                                                                                                          [23;1H~                                                                                                          [24;1H~                                                                                                          [m[25;90H1,1[11CAll"overload.cc" 16L, 282C[1;1H[?25h[?25l[25;80H:[1;1H[25;1H[K[25;1H:[?2004h[?25hq[?25l[?25h[?25l[?1006l[?1002l[?2004l[23;2t[23;1t[22;2t[22;1t[23;2t[23;1t[25;1H[K[25;1H[?2004l[?1l>[?25h[?1049l[23;0;0tqxiong1@remote00:~/i240a/work/lab2/3-overload$ make
+g++ -g -Wall -std=c++17    overload.cc   -o overload
+qxiong1@remote00:~/i240a/work/lab2/3-overload$ ./overload
+f(a) = 3; f(&a) = 4; f(a, b) = -1
+qxiong1@remote00:~/i240a/work/lab2/3-overload$ gdb overload
+GNU gdb (Debian 8.2.1-2+b3) 8.2.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from overload...done.
+(gdb) stgart[K[K[K[K[K[Kstart
+Temporary breakpoint 1 at 0x11b1: file overload.cc, line 9.
+Starting program: /import/linux/home1/qxiong1/projects/i240a/work/lab2/3-overload/overload 
+
+Temporary breakpoint 1, main () at overload.cc:9
+9	  int a = 2;
+(gdb) b f[K[K[Kl
+4	int f(int a) { return a + 1;}
+5	int f(int a, int b) { return a - b; }
+6	
+7	int
+8	main() {
+9	  int a = 2;
+10	  int b = 3;
+11	  std::cout 
+12	    << "f(a) = " << f(a)
+13	    << "; f(&a) = " << f(&a)
+(gdb) 
+14	    << "; f(a, b) = " << f(a, b)
+15	    << std::endl;
+16	}
+(gdb) 
+Line number 17 out of range; overload.cc has 16 lines.
+(gdb) 
+Line number 17 out of range; overload.cc has 16 lines.
+(gdb) b f[K[K[Kn
+10	  int b = 3;
+(gdb) up
+Initial frame selected; you cannot go up.
+(gdb) down
+Bottom (innermost) frame selected; you cannot go down.
+(gdb) n
+12	    << "f(a) = " << f(a)
+(gdb) c
+Continuing.
+f(a) = 3; f(&a) = 4; f(a, b) = -1
+[Inferior 1 (process 3303869) exited normally]
+(gdb) start[K[K[K[K[Kn
+The program is not being run.
+(gdb) l
+7	int
+8	main() {
+9	  int a = 2;
+10	  int b = 3;
+11	  std::cout 
+12	    << "f(a) = " << f(a)
+13	    << "; f(&a) = " << f(&a)
+14	    << "; f(a, b) = " << f(a, b)
+15	    << std::endl;
+16	}
+(gdb) b f
+Breakpoint 2 at 0x55555555517d: f. (3 locations)
+(gdb) q
+qxiong1@remote00:~/i240a/work/lab2/3-overload$ clear
+[H[2J[3Jqxiong1@remote00:~/i240a/work/lab2/3-overload$ gc[Kdb b[Koverload
+GNU gdb (Debian 8.2.1-2+b3) 8.2.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from overload...done.
+(gdb) l
+1	#include <iostream>
+2	
+3	int f(int *a) { return *a * 2; }
+4	int f(int a) { return a + 1;}
+5	int f(int a, int b) { return a - b; }
+6	
+7	int
+8	main() {
+9	  int a = 2;
+10	  int b = 3;
+(gdb) n
+The program is not being run.
+(gdb) start f[K[K[K[K[K[K[Kc
+The program is not being run.
+(gdb) start[K[K[K[K[Kb int[K[K[K[K f
+f(int)       f(int*)      f(int, int)  frame_dummy  
+(gdb) b f
+f(int)       f(int*)      f(int, int)  frame_dummy  
+(gdb) b f
+f(int)       f(int*)      f(int, int)  frame_dummy  
+(gdb) b f
+f(int)       f(int*)      f(int, int)  frame_dummy  
+(gdb) b f
+Breakpoint 1 at 0x117d: f. (3 locations)
+(gdb) b f(int*)
+Note: breakpoint 1 also set at pc 0x117d.
+Breakpoint 2 at 0x117d: file overload.cc, line 3.
+(gdb) p a
+No symbol "a" in current context.
+(gdb) q
+qxiong1@remote00:~/i240a/work/lab2/3-overload$ f[Kgdv[Kb[K[K[Kclear
+[H[2J[3Jqxiong1@remote00:~/i240a/work/lab2/3-overload$ o[K./overload 
+f(a) = 3; f(&a) = 4; f(a, b) = -1
+qxiong1@remote00:~/i240a/work/lab2/3-overload$ vim oveer[K[Krload
+[?1000h[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;25r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[25;1H"overload" [noeol][converted] 166L, 111126C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;1H[34m^?[mELF[34m^B^A^A^@^@^@^@^@^@^@^@^@^C^@[m>[34m^@^A^@^@^@<90>^P^@^@^@^@^@^@[m@[34m^@^@^@^@^@^@^@[m [34m<92>^A^@^@^@^@^@^@^@^@^@[m@[34m^@[m8[34m^^[2;1H@^K^@[m@[34m^@[m#[34m^@[m"[34m^@^F^@^@^@^D^@^@^@[m@[34m^@^@^@^@^@^@^@[m@[34m^@^@^@^@^@^@^@[m@[34m^@^@^@^@^@^@^@[mh[34m^B^@^@^@^@^@^@[mh[34m^B^@^@^@^@^@^@^HH[3;1H^@^@^@^@^@^@^@^C^@^@^@^D^@^@^@[m¨[3;32H[34m^B^@^@^@^@^@^@[m¨[3;47H[34m^B^@^@^@^@^@^@[m¨[3;62H[34m^B^@^@^@^@^@^@^\^@^@^@^@^@^@^@^\^@^@^@^@^@^@^@@[4;1H^A^@^@^@^@^@^@^@^A^@^@^@^D^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^H^@^@^@^@^@^@^@^H^@^@^@^^[5;1H@^@^@^@^P^@^@^@^@^@^@^A^@^@^@^E^@^@^@^@^P^@^@^@^@^@^@^@^P^@^@^@^@^@^@^@^P^@^@^@^@^@^@[m-[34m^C^@^@^@^@^@^@[m-[34m^C^@^@@[6;1H^@^@^@^@^@^P^@^@^@^@^@^@^A^@^@^@^D^@^@^@^@[m [34m^@^@^@^@^@^@^@[m [34m^@^@^@^@^@^@^@[m [34m^@^@^@^@^@^@[m8[34m^B^@^@^@^@^@^@[m8[34m^B^@^@@[7;1H^@^@^@^@^@^P^@^@^@^@^@^@^A^@^@^@^F^@^@^@[m -[34m^@^@^@^@^@^@[m =[34m^@^@^@^@^@^@[m =[34m^@^@^@^@^@^@[m°[7;84H[34m^B^@^@^@^@^@^@[mØ[7;99H[34m^C^@^@^@^^[8;1H@^@^@^@^P^@^@^@^@^@^@^B^@^@^@^F^@^@^@[m¸[8;39H-[34m^@^@^@^@^@^@[m¸[8;53H=[34m^@^@^@^@^@^@[m¸[8;67H=[34m^@^@^@^@^@^@^P^B^@^@^@^@^@^@^P^B^@^@^@^@@[9;1H^@^@^H^@^@^@^@^@^@^@^D^@^@^@^D^@^@^@[mÄ[34m^B^@^@^@^@^@^@[mÄ[34m^B^@^@^@^@^@^@[mÄ[34m^B^@^@^@^@^@^@[mD[34m^@^@^@^@^@^@^@[mD[34m^@^@^@^@^@@[10;1H^@^@^D^@^@^@^@^@^@^@[mPåtd[34m^D^@^@^@[m$ [34m^@^@^@^@^@^@[m$ [34m^@^@^@^@^@^@[m$ [34m^@^@^@^@^@^@[md[34m^@^@^@^@^@^@^@[md[34m^@^@^@^@^@^@^@^D^^[11;1H@^@^@^@^@^@^@[mQåtd[34m^F^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^PP[12;1H^@^@^@^@^@^@^@[mRåtd[34m^D^@^@^@[m -[34m^@^@^@^@^@^@[m =[34m^@^@^@^@^@^@[m =[34m^@^@^@^@^@^@[m`[34m^B^@^@^@^@^@^@[m`[34m^B^@^@^@^@^@^@^A^@^@^@^^[13;1H@^@^@^@[m/lib64/ld-linux-x86-64.so.2[34m^@^D^@^@^@^P^@^@^@^A^@^@^@[mGNU[34m^@^@^@^@^@^C^@^@^@^B^@^@^@^@^@^@^@^D^@^@^@^TT[14;1H^@^@^@^C^@^@^@[mGNU[34m^@[m5ã`Ò±[14;25H[34m^U[mi[34m<87>[mK[34m^B<85>^C[mX¶[14;43Hº[14;44H÷[14;45Hã[34m^T[mÉ+[34m^B^@^@^@^L^@^@^@^A^@^@^@^F^@^@^@^@^@<91>^@^A^@^@^@^L^@^@^@@[15;1H^@^@^@^@[mÐ[15;10HeÎm[34m^U<98>^L[mC[34m^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@[m~[34m^@^@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^^[16;1H@^@^@^@^@[m?[34m^A^@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@[mÑ[34m^@^@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@[mm[34m^@^^[17;1H@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@[m¹[17;45H[34m^@^@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^S^A^@^@^R^@^@^@^^[18;1H@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^_^@^@^@[m [34m^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@[m[[34m^A^@^@^R^@^@^@^@^@^@^@^@^@^@@[19;1H^@^@^@^@^@^@^@^@^@^P^@^@^@[m [34m^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@[m;[34m^@^@^@[m [34m^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@@[20;1H^@^@[mU[34m^@^@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@[mL[34m^A^@^@[m"[34m^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@[m      [34m^A^@@[21;1H^@^Q^@^Y^@[m`@[34m^@^@^@^@^@^@^P^A^@^@^@^@^@^@^@[mlibstdc++.so.6[34m^@[m__gmon_start__[34m^@[m_ITM_deregisterTMCloneTable[34m^@[m_ITMM[22;1H_registerTMCloneTable[34m^@[m_ZNSt8ios_base4InitD1Ev[34m^@[m_ZNSolsEPFRSoS_E[34m^@[m_ZSt4endlIcSt11char_traitsIcEERSt13basic__[23;1HostreamIT_T0_ES6_[34m^@[m_ZNSt8ios_base4InitC1Ev[34m^@[m_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc[34m^@[m_ZSt4cc[24;1Hout[34m^@[m_ZNSolsEi[34m^@[mlibm.so.6[34m^@[mlibgcc_s.so.1[34m^@[mlibc.so.6[34m^@[m__cxa_atexit[34m^@[m__cxa_finalize[34m^@[m__libc_start_main[34m^@[mGLIBC[25;90H1,1[11CTop[1;1H[?25h[?1000l[?1006h[?1002h[?1006l[?1002l[?1006h[?1002h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m^?[mELF[38;5;81m^B^A^A^@^@^@^@^@^@^@^@^@^C^@[m>[38;5;81m^@^A^@^@^@<90>^P^@^@^@^@^@^@[m@[38;5;81m^@^@^@^@^@^@^@[m [38;5;81m<92>^A^@^@^@^@^@^@^@^@^@[m@[38;5;81m^@[m8[38;5;81m^^[2;1H@^K^@[m@[38;5;81m^@[m#[38;5;81m^@[m"[38;5;81m^@^F^@^@^@^D^@^@^@[m@[38;5;81m^@^@^@^@^@^@^@[m@[38;5;81m^@^@^@^@^@^@^@[m@[38;5;81m^@^@^@^@^@^@^@[mh[38;5;81m^B^@^@^@^@^@^@[mh[38;5;81m^B^@^@^@^@^@^@^HH[3;1H^@^@^@^@^@^@^@^C^@^@^@^D^@^@^@[m¨[3;32H[38;5;81m^B^@^@^@^@^@^@[m¨[3;47H[38;5;81m^B^@^@^@^@^@^@[m¨[3;62H[38;5;81m^B^@^@^@^@^@^@^\^@^@^@^@^@^@^@^\^@^@^@^@^@^@^@@[4;1H^A^@^@^@^@^@^@^@^A^@^@^@^D^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^H^@^@^@^@^@^@^@^H^@^@^@^^[5;1H@^@^@^@^P^@^@^@^@^@^@^A^@^@^@^E^@^@^@^@^P^@^@^@^@^@^@^@^P^@^@^@^@^@^@^@^P^@^@^@^@^@^@[m-[38;5;81m^C^@^@^@^@^@^@[m-[38;5;81m^C^@^@@[6;1H^@^@^@^@^@^P^@^@^@^@^@^@^A^@^@^@^D^@^@^@^@[m [38;5;81m^@^@^@^@^@^@^@[m [38;5;81m^@^@^@^@^@^@^@[m [38;5;81m^@^@^@^@^@^@[m8[38;5;81m^B^@^@^@^@^@^@[m8[38;5;81m^B^@^@@[7;1H^@^@^@^@^@^P^@^@^@^@^@^@^A^@^@^@^F^@^@^@[m -[38;5;81m^@^@^@^@^@^@[m =[38;5;81m^@^@^@^@^@^@[m =[38;5;81m^@^@^@^@^@^@[m°[7;84H[38;5;81m^B^@^@^@^@^@^@[mØ[7;99H[38;5;81m^C^@^@^@^^[8;1H@^@^@^@^P^@^@^@^@^@^@^B^@^@^@^F^@^@^@[m¸[8;39H-[38;5;81m^@^@^@^@^@^@[m¸[8;53H=[38;5;81m^@^@^@^@^@^@[m¸[8;67H=[38;5;81m^@^@^@^@^@^@^P^B^@^@^@^@^@^@^P^B^@^@^@^@@[9;1H^@^@^H^@^@^@^@^@^@^@^D^@^@^@^D^@^@^@[mÄ[38;5;81m^B^@^@^@^@^@^@[mÄ[38;5;81m^B^@^@^@^@^@^@[mÄ[38;5;81m^B^@^@^@^@^@^@[mD[38;5;81m^@^@^@^@^@^@^@[mD[38;5;81m^@^@^@^@^@@[10;1H^@^@^D^@^@^@^@^@^@^@[mPåtd[38;5;81m^D^@^@^@[m$ [38;5;81m^@^@^@^@^@^@[m$ [38;5;81m^@^@^@^@^@^@[m$ [38;5;81m^@^@^@^@^@^@[md[38;5;81m^@^@^@^@^@^@^@[md[38;5;81m^@^@^@^@^@^@^@^D^^[11;1H@^@^@^@^@^@^@[mQåtd[38;5;81m^F^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^PP[12;1H^@^@^@^@^@^@^@[mRåtd[38;5;81m^D^@^@^@[m -[38;5;81m^@^@^@^@^@^@[m =[38;5;81m^@^@^@^@^@^@[m =[38;5;81m^@^@^@^@^@^@[m`[38;5;81m^B^@^@^@^@^@^@[m`[38;5;81m^B^@^@^@^@^@^@^A^@^@^@^^[13;1H@^@^@^@[m/lib64/ld-linux-x86-64.so.2[38;5;81m^@^D^@^@^@^P^@^@^@^A^@^@^@[mGNU[38;5;81m^@^@^@^@^@^C^@^@^@^B^@^@^@^@^@^@^@^D^@^@^@^TT[14;1H^@^@^@^C^@^@^@[mGNU[38;5;81m^@[m5ã`Ò±[14;25H[38;5;81m^U[mi[38;5;81m<87>[mK[38;5;81m^B<85>^C[mX¶[14;43Hº[14;44H÷[14;45Hã[38;5;81m^T[mÉ+[38;5;81m^B^@^@^@^L^@^@^@^A^@^@^@^F^@^@^@^@^@<91>^@^A^@^@^@^L^@^@^@@[15;1H^@^@^@^@[mÐ[15;10HeÎm[38;5;81m^U<98>^L[mC[38;5;81m^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@[m~[38;5;81m^@^@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^^[16;1H@^@^@^@^@[m?[38;5;81m^A^@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@[mÑ[38;5;81m^@^@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@[mm[38;5;81m^@^^[17;1H@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@[m¹[17;45H[38;5;81m^@^@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^S^A^@^@^R^@^@^@^^[18;1H@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^_^@^@^@[m [38;5;81m^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@[m[[38;5;81m^A^@^@^R^@^@^@^@^@^@^@^@^@^@@[19;1H^@^@^@^@^@^@^@^@^@^P^@^@^@[m [38;5;81m^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@[m;[38;5;81m^@^@^@[m [38;5;81m^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@@[20;1H^@^@[mU[38;5;81m^@^@^@^R^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@[mL[38;5;81m^A^@^@[m"[38;5;81m^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@^@[m      [38;5;81m^A^@@[21;1H^@^Q^@^Y^@[m`@[38;5;81m^@^@^@^@^@^@^P^A^@^@^@^@^@^@^@[mlibstdc++.so.6[38;5;81m^@[m__gmon_start__[38;5;81m^@[m_ITM_deregisterTMCloneTable[38;5;81m^@[m_ITMM[22;1H_registerTMCloneTable[38;5;81m^@[m_ZNSt8ios_base4InitD1Ev[38;5;81m^@[m_ZNSolsEPFRSoS_E[38;5;81m^@[m_ZSt4endlIcSt11char_traitsIcEERSt13basic__[23;1HostreamIT_T0_ES6_[38;5;81m^@[m_ZNSt8ios_base4InitC1Ev[38;5;81m^@[m_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc[38;5;81m^@[m_ZSt4cc[24;1Hout[38;5;81m^@[m_ZNSolsEi[38;5;81m^@[mlibm.so.6[38;5;81m^@[mlibgcc_s.so.1[38;5;81m^@[mlibc.so.6[38;5;81m^@[m__cxa_atexit[38;5;81m^@[m__cxa_finalize[38;5;81m^@[m__libc_start_main[38;5;81m^@[mGLIBC[25;90H1,1[11CTop"overload" [noeol][converted] 166L, 111126C[1;1H[?25h[?25l[25;80H:[1;1H[25;1H[K[25;1H:[?2004h[?25hq[?25l[?25h[?25l[?1006l[?1002l[?2004l[23;2t[23;1t[22;2t[22;1t[23;2t[23;1t[25;1H[K[25;1H[?2004l[?1l>[?25h[?1049l[23;0;0tqxiong1@remote00:~/i240a/work/lab2/3-overload$ vim overload.cc
+[?1000h[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;25r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[25;1H"overload.cc" 16L, 282C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;1H[35m#include [m[31m<iostream>[m
+
+[32mint[m f([32mint[m *a) { [38;5;130mreturn[m *a * [31m2[m; }
+[32mint[m f([32mint[m a) { [38;5;130mreturn[m a + [31m1[m;}
+[32mint[m f([32mint[m a, [32mint[m b) { [38;5;130mreturn[m a - b; }
+
+[32mint[m
+main() {
+  [32mint[m a = [31m2[m;
+  [32mint[m b = [31m3[m;
+  std::cout
+    << [31m"f(a) = "[m << f(a)
+    << [31m"; f(&a) = "[m << f(&a)
+    << [31m"; f(a, b) = "[m << f(a, b)
+    << std::endl;
+}
+[94m~                                                                                                          [18;1H~                                                                                                          [19;1H~                                                                                                          [20;1H~                                                                                                          [21;1H~                                                                                                          [22;1H~                                                                                                          [23;1H~                                                                                                          [24;1H~                                                                                                          [m[25;90H1,1[11CAll[1;1H[?25h[?1000l[?1006h[?1002h[?1006l[?1002l[?1006h[?1002h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m#include [m[95m<iostream>[m
+
+[38;5;121mint[m f([38;5;121mint[m *a) { [93mreturn[m *a * [95m2[m; }
+[38;5;121mint[m f([38;5;121mint[m a) { [93mreturn[m a + [95m1[m;}
+[38;5;121mint[m f([38;5;121mint[m a, [38;5;121mint[m b) { [93mreturn[m a - b; }
+
+[38;5;121mint[m
+main() {
+  [38;5;121mint[m a = [95m2[m;
+  [38;5;121mint[m b = [95m3[m;
+  std::cout
+    << [95m"f(a) = "[m << f(a)
+    << [95m"; f(&a) = "[m << f(&a)
+    << [95m"; f(a, b) = "[m << f(a, b)
+    << std::endl;
+}
+[94m~                                                                                                          [18;1H~                                                                                                          [19;1H~                                                                                                          [20;1H~                                                                                                          [21;1H~                                                                                                          [22;1H~                                                                                                          [23;1H~                                                                                                          [24;1H~                                                                                                          [m[25;90H1,1[11CAll"overload.cc" 16L, 282C[1;1H[?25h[?25l[25;90H9,12[9;12H[?25h[?25l[25;80H1[9;12H[25;1H[1m-- VISUAL --[m[25;13H[K[25;80H1[9;12H[25;90H9,12[10CAll[9;12H[?25h[?25l[?25h[?25l[25;80H:[9;12H[25;80H [9;12H[25;1H[K[25;1H:[?2004h'<,'>[?25hq[?25l[?25h[?25l[25;7H[K[25;7H[?25hq[?25l[?25h[?25l[97m[41mE14: Invalid address[m[69C9,12[10CAll[9;12H[?25h[?25l[25;80H:[9;12H[25;1H[K[25;1H:[?2004h[?25hq[?25l[?25h![?25l[?25h[?25l[?1006l[?1002l[?2004l[23;2t[23;1t[22;2t[22;1t[23;2t[23;1t[25;1H[K[25;1H[?2004l[?1l>[?25h[?1049l[23;0;0tqxiong1@remote00:~/i240a/work/lab2/3-overload$ b[Kcd ..
+qxiong1@remote00:~/i240a/work/lab2$ c[Kcd ~/i240a/[K
+qxiong1@remote00:~/i240a$ git branch -k[Kl
+[?1h=  lab0[m[m
+  lab1[m[m
+* [32mlab2[m[m
+  master[m[m
+[K[?1l>qxiong1@remote00:~/i240a$ git merge -m ;[K'merg
