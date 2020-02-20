@@ -1,0 +1,1257 @@
+Script started on 2020-02-13 10:28:43-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+qxiong1@g7-17:~/i240a/work/lab3$ e[Kcd..[K[K[K[Kls
+exercises  lab3.log
+qxiong1@g7-17:~/i240a/work/lab3$ cd exercises/1-greet/
+qxiong1@g7-17:~/i240a/work/lab3/exercises/1-greet$ ls
+greet  greet.cc  README
+qxiong1@g7-17:~/i240a/work/lab3/exercises/1-greet$ cd ..
+qxiong1@g7-17:~/i240a/work/lab3/exercises$ cd 2-greet/
+qxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ ls
+greet.cc  README
+qxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ make
+make: *** No targets specified and no makefile found.  Stop.
+qxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ make -f ..M[K/Makefile 
+g++ -g -Wall -std=c++17    greet.cc   -o greet
+cat </dev/null >.gitignore
+for t in greet; do echo $t >>.gitignore; done
+qxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ make
+make: *** No targets specified and no makefile found.  Stop.
+qxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ clear
+[H[2J[3Jqxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ ./greet mciha[K[K[K[Kichael
+hello michael
+qxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ ./greet michael bern
+hello michael
+hello bern
+qxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ valgraind ./greet lisa [K[K[K[K[Kmichael ber n
+bash: valgraind: command not found
+qxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ valgra[Kind ./b[Kgret[Ket michael bern [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kn
+==128290== Memcheck, a memory error detector
+==128290== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==128290== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==128290== Command: ./greet michael bern
+==128290== 
+hello michael
+hello bern
+==128290== 
+==128290== HEAP SUMMARY:
+==128290==     in use at exit: 25 bytes in 2 blocks
+==128290==   total heap usage: 4 allocs, 2 frees, 73,753 bytes allocated
+==128290== 
+==128290== LEAK SUMMARY:
+==128290==    definitely lost: 25 bytes in 2 blocks
+==128290==    indirectly lost: 0 bytes in 0 blocks
+==128290==      possibly lost: 0 bytes in 0 blocks
+==128290==    still reachable: 0 bytes in 0 blocks
+==128290==         suppressed: 0 bytes in 0 blocks
+==128290== Rerun with --leak-check=full to see details of leaked memory
+==128290== 
+==128290== For counts of detected and suppressed errors, rerun with: -v
+==128290== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+qxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ vim greet.cc 
+[?1000h[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;24r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[24;1H"greet.cc" 28L, 558C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;1H[35m#include [m[31m<iostream>[m
+[35m#include [m[31m<cstdlib>[m
+[35m#include [m[31m<cstring>[m
+
+[35m#define GREET [m[31m"hello"[m
+
+[32mstatic[m [32mconst[m [32mchar[m *
+greetMsg([32mconst[m [32mchar[m *name)
+{
+  [32mconst[m std::[32msize_t[m len = strlen(GREET) + [31m1[m + strlen(name);
+  [32mchar[m *msg = [38;5;130mnew[m [32mchar[m[len + [31m1[m];
+  strcpy(msg, GREET); strcat(msg, [31m" "[m); strcat(msg, name);
+  [38;5;130mreturn[m msg;
+}
+
+[32mint[m
+main([32mint[m argc, [32mconst[m [32mchar[m *argv[])
+{
+  [38;5;130mif[m (argc == [31m1[m) {
+    std::cerr << [31m"usage: "[m << argv[[31m0[m] << [31m" NAME..."[m << std::endl;
+    std::exit([31m1[m);
+  }
+  [38;5;130melse[m {[24;63H1,1[11CTop]2;greet.cc (~/projects/i240a/work/lab3/exercises/2-greet) - VIM]1;greet.cc[1;1H[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?1000l[?1006h[?1002h[?1006l[?1002l[?1006h[?1002h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m#include [m[95m<iostream>[m
+[38;5;81m#include [m[95m<cstdlib>[m
+[38;5;81m#include [m[95m<cstring>[m
+
+[38;5;81m#define GREET [m[95m"hello"[m
+
+[38;5;121mstatic[m [38;5;121mconst[m [38;5;121mchar[m *
+greetMsg([38;5;121mconst[m [38;5;121mchar[m *name)
+{
+  [38;5;121mconst[m std::[38;5;121msize_t[m len = strlen(GREET) + [95m1[m + strlen(name);
+  [38;5;121mchar[m *msg = [93mnew[m [38;5;121mchar[m[len + [95m1[m];
+  strcpy(msg, GREET); strcat(msg, [95m" "[m); strcat(msg, name);
+  [93mreturn[m msg;
+}
+
+[38;5;121mint[m
+main([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])
+{
+  [93mif[m (argc == [95m1[m) {
+    std::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;
+    std::exit([95m1[m);
+  }
+  [93melse[m {[24;63H1,1[11CTop"greet.cc" 28L, 558C[1;1H[?25h[?25l[24;64H0,25[10;25H[?25h[?25l[24;64H3,13[13;13H[?25h[?25l[24;64H0,40[10;40H[?25h[?25l[17;5H[46m([28C)[m[24;64H7,34[17;34H[?25h[?25l[24;53H~@k[17;34H[24;53H   [18;1H[17;5H([28C)[24;64H8,1 [18;1H[?25h[?25l[24;53H~@k[18;1H[24;53H   [18;18H[1;23r[23;1H
+[1;24r[18;18H[46m{[21;3H}[m[23;5H[93mfor[m ([38;5;121mint[m i = [95m1[m; i < argc; i++) {[24;1H[K[24;63H19,18[9C20%[18;18H[?25h[?25l[24;53H~@k[18;18H[24;53H   [18;38H[1;23r[23;1H
+[1;24r[17;18H{[20;3H}[23;7Hstd::cout << greetMsg(argv[i]) << std::endl;[24;63H[K[24;63H20,38[9C40%[18;38H[?25h[?25l[24;53H~@k[18;38H[24;53H   [18;17H[1;23r[23;1H
+[1;24r[23;5H}[24;63H[K[24;63H21,17[9C60%[18;17H[?25h[?25l[24;53H~@k[18;17H[24;53H   [18;3H[1;23r[23;1H
+[1;24r[15;18H[46m{[18;3H}[m[23;3H}[24;63H[K[24;63H22,3[10C80%[18;3H[?25h[?25l[24;53H~@k[18;3H[24;53H   [18;8H[1;23r[23;1H
+[1;24r[14;18H{[17;3H}[18;8H[46m{[22;3H}[m
+}[24;63H[K[24;63H23,8[10CBot[18;8H[?25h[?25l[24;53H~@k[18;8H[24;53H   [19;36H[18;8H{[19;36H[46m{[21;5H}[m
+  }[24;64H4,36[19;36H[?25h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m#define GREET [m[95m"hello"[m
+
+[38;5;121mstatic[m [38;5;121mconst[m [38;5;121mchar[m *
+greetMsg([38;5;121mconst[m [38;5;121mchar[m *name)
+{
+  [38;5;121mconst[m std::[38;5;121msize_t[m len = strlen(GREET) + [95m1[m + strlen(name);
+  [38;5;121mchar[m *msg = [93mnew[m [38;5;121mchar[m[len + [95m1[m];
+  strcpy(msg, GREET); strcat(msg, [95m" "[m); strcat(msg, name);
+  [93mreturn[m msg;
+}
+
+[38;5;121mint[m
+main([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])
+{
+  [93mif[m (argc == [95m1[m) {
+    std::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;
+    std::exit([95m1[m);
+  }
+  [93melse[m {
+    [93mfor[m ([38;5;121mint[m i = [95m1[m; i < argc; i++) [46m{[m[21;7Hstd::cout << greetMsg(argv[i]) << std::endl;
+    [46m}[m
+  }
+}[25;63H24,36[9CBot[20;36H[?25h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m#include [m[95m<cstring>[m
+
+[38;5;81m#define GREET [m[95m"hello"[m
+
+[38;5;121mstatic[m [38;5;121mconst[m [38;5;121mchar[m *
+greetMsg([38;5;121mconst[m [38;5;121mchar[m *name)
+{
+  [38;5;121mconst[m std::[38;5;121msize_t[m len = strlen(GREET) + [95m1[m + strlen(name);
+  [38;5;121mchar[m *msg = [93mnew[m [38;5;121mchar[m[len + [95m1[m];
+  strcpy(msg, GREET); strcat(msg, [95m" "[m); strcat(msg, name);
+  [93mreturn[m msg;
+}
+
+[38;5;121mint[m
+main([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])
+{
+  [93mif[m (argc == [95m1[m) {
+    std::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;
+    std::exit([95m1[m);
+  }
+  [93melse[m {
+    [93mfor[m ([38;5;121mint[m i = [95m1[m; i < argc; i++) [46m{[m[23;7Hstd::cout << greetMsg(argv[i]) << std::endl;
+    [46m}[m
+  }
+}
+[94m~                                                                               [m[28;63H24,36[9CBot[22;36H[?25h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m#include [m[95m<iostream>[m
+[38;5;81m#include [m[95m<cstdlib>[m
+[38;5;81m#include [m[95m<cstring>[m
+
+[38;5;81m#define GREET [m[95m"hello"[m
+
+[38;5;121mstatic[m [38;5;121mconst[m [38;5;121mchar[m *
+greetMsg([38;5;121mconst[m [38;5;121mchar[m *name)
+{
+  [38;5;121mconst[m std::[38;5;121msize_t[m len = strlen(GREET) + [95m1[m + strlen(name);
+  [38;5;121mchar[m *msg = [93mnew[m [38;5;121mchar[m[len + [95m1[m];
+  strcpy(msg, GREET); strcat(msg, [95m" "[m); strcat(msg, name);
+  [93mreturn[m msg;
+}
+
+[38;5;121mint[m
+main([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])
+{
+  [93mif[m (argc == [95m1[m) {
+    std::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;
+    std::exit([95m1[m);
+  }
+  [93melse[m {
+    [93mfor[m ([38;5;121mint[m i = [95m1[m; i < argc; i++) [46m{[m[25;7Hstd::cout << greetMsg(argv[i]) << std::endl;
+    [46m}[m
+  }
+}
+[94m~                                                                               [30;1H~                                                                               [31;1H~                                                                               [m[32;63H24,36[9CAll[24;36H[?25h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m#include [m[95m<iostream>[m
+[38;5;81m#include [m[95m<cstdlib>[m
+[38;5;81m#include [m[95m<cstring>[m
+
+[38;5;81m#define GREET [m[95m"hello"[m
+
+[38;5;121mstatic[m [38;5;121mconst[m [38;5;121mchar[m *
+greetMsg([38;5;121mconst[m [38;5;121mchar[m *name)
+{
+  [38;5;121mconst[m std::[38;5;121msize_t[m len = strlen(GREET) + [95m1[m + strlen(name);
+  [38;5;121mchar[m *msg = [93mnew[m [38;5;121mchar[m[len + [95m1[m];
+  strcpy(msg, GREET); strcat(msg, [95m" "[m); strcat(msg, name);
+  [93mreturn[m msg;
+}
+
+[38;5;121mint[m
+main([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])
+{
+  [93mif[m (argc == [95m1[m) {
+    std::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;
+    std::exit([95m1[m);
+  }
+  [93melse[m {
+    [93mfor[m ([38;5;121mint[m i = [95m1[m; i < argc; i++) [46m{[m[25;7Hstd::cout << greetMsg(argv[i]) << std::endl;
+    [46m}[m
+  }
+}
+[94m~                                                                               [30;1H~                                                                               [31;1H~                                                                               [32;1H~                                                                               [33;1H~                                                                               [m[34;63H24,36[9CAll[24;36H[?25h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m#include [m[95m<iostream>[m
+[38;5;81m#include [m[95m<cstdlib>[m
+[38;5;81m#include [m[95m<cstring>[m
+
+[38;5;81m#define GREET [m[95m"hello"[m
+
+[38;5;121mstatic[m [38;5;121mconst[m [38;5;121mchar[m *
+greetMsg([38;5;121mconst[m [38;5;121mchar[m *name)
+{
+  [38;5;121mconst[m std::[38;5;121msize_t[m len = strlen(GREET) + [95m1[m + strlen(name);
+  [38;5;121mchar[m *msg = [93mnew[m [38;5;121mchar[m[len + [95m1[m];
+  strcpy(msg, GREET); strcat(msg, [95m" "[m); strcat(msg, name);
+  [93mreturn[m msg;
+}
+
+[38;5;121mint[m
+main([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])
+{
+  [93mif[m (argc == [95m1[m) {
+    std::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;
+    std::exit([95m1[m);
+  }
+  [93melse[m {
+    [93mfor[m ([38;5;121mint[m i = [95m1[m; i < argc; i++) [46m{[m[25;7Hstd::cout << greetMsg(argv[i]) << std::endl;
+    [46m}[m
+  }
+}
+[94m~                                                                               [30;1H~                                                                               [31;1H~                                                                               [32;1H~                                                                               [33;1H~                                                                               [34;1H~                                                                               [m[35;63H24,36[9CAll[24;36H[?25h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m#include [m[95m<iostream>[m
+[38;5;81m#include [m[95m<cstdlib>[m
+[38;5;81m#include [m[95m<cstring>[m
+
+[38;5;81m#define GREET [m[95m"hello"[m
+
+[38;5;121mstatic[m [38;5;121mconst[m [38;5;121mchar[m *
+greetMsg([38;5;121mconst[m [38;5;121mchar[m *name)
+{
+  [38;5;121mconst[m std::[38;5;121msize_t[m len = strlen(GREET) + [95m1[m + strlen(name);
+  [38;5;121mchar[m *msg = [93mnew[m [38;5;121mchar[m[len + [95m1[m];
+  strcpy(msg, GREET); strcat(msg, [95m" "[m); strcat(msg, name);
+  [93mreturn[m msg;
+}
+
+[38;5;121mint[m
+main([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])
+{
+  [93mif[m (argc == [95m1[m) {
+    std::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;
+    std::exit([95m1[m);
+  }
+  [93melse[m {
+    [93mfor[m ([38;5;121mint[m i = [95m1[m; i < argc; i++) [46m{[m[25;7Hstd::cout << greetMsg(argv[i]) << std::endl;
+    [46m}[m
+  }
+}
+[94m~                                                                               [30;1H~                                                                               [31;1H~                                                                               [32;1H~                                                                               [33;1H~                                                                               [34;1H~                                                                               [35;1H~                                                                               [m[36;63H24,36[9CAll[24;36H[?25h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m#include [m[95m<iostream>[m
+[38;5;81m#include [m[95m<cstdlib>[m
+[38;5;81m#include [m[95m<cstring>[m
+
+[38;5;81m#define GREET [m[95m"hello"[m
+
+[38;5;121mstatic[m [38;5;121mconst[m [38;5;121mchar[m *
+greetMsg([38;5;121mconst[m [38;5;121mchar[m *name)
+{
+  [38;5;121mconst[m std::[38;5;121msize_t[m len = strlen(GREET) + [95m1[m + strlen(name);
+  [38;5;121mchar[m *msg = [93mnew[m [38;5;121mchar[m[len + [95m1[m];
+  strcpy(msg, GREET); strcat(msg, [95m" "[m); strcat(msg, name);
+  [93mreturn[m msg;
+}
+
+[38;5;121mint[m
+main([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])
+{
+  [93mif[m (argc == [95m1[m) {
+    std::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;
+    std::exit([95m1[m);
+  }
+  [93melse[m {
+    [93mfor[m ([38;5;121mint[m i = [95m1[m; i < argc; i++) [46m{[m[25;7Hstd::cout << greetMsg(argv[i]) << std::endl;
+    [46m}[m
+  }
+}
+[94m~                                                                               [30;1H~                                                                               [31;1H~                                                                               [32;1H~                                                                               [33;1H~                                                                               [34;1H~                                                                               [35;1H~                                                                               [36;1H~                                                                               [m[37;63H24,36[9CAll[24;36H[?25h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m#include [m[95m<iostream>[m
+[38;5;81m#include [m[95m<cstdlib>[m
+[38;5;81m#include [m[95m<cstring>[m
+
+[38;5;81m#define GREET [m[95m"hello"[m
+
+[38;5;121mstatic[m [38;5;121mconst[m [38;5;121mchar[m *
+greetMsg([38;5;121mconst[m [38;5;121mchar[m *name)
+{
+  [38;5;121mconst[m std::[38;5;121msize_t[m len = strlen(GREET) + [95m1[m + strlen(name);
+  [38;5;121mchar[m *msg = [93mnew[m [38;5;121mchar[m[len + [95m1[m];
+  strcpy(msg, GREET); strcat(msg, [95m" "[m); strcat(msg, name);
+  [93mreturn[m msg;
+}
+
+[38;5;121mint[m
+main([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])
+{
+  [93mif[m (argc == [95m1[m) {
+    std::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;
+    std::exit([95m1[m);
+  }
+  [93melse[m {
+    [93mfor[m ([38;5;121mint[m i = [95m1[m; i < argc; i++) [46m{[m[25;7Hstd::cout << greetMsg(argv[i]) << std::endl;
+    [46m}[m
+  }
+}
+[94m~                                                                               [30;1H~                                                                               [31;1H~                                                                               [32;1H~                                                                               [33;1H~                                                                               [34;1H~                                                                               [35;1H~                                                                               [36;1H~                                                                               [37;1H~                                                                               [38;1H~                                                                               [m[39;63H24,36[9CAll[24;36H[?25h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m#include [m[95m<iostream>[m
+[38;5;81m#include [m[95m<cstdlib>[m
+[38;5;81m#include [m[95m<cstring>[m
+
+[38;5;81m#define GREET [m[95m"hello"[m
+
+[38;5;121mstatic[m [38;5;121mconst[m [38;5;121mchar[m *
+greetMsg([38;5;121mconst[m [38;5;121mchar[m *name)
+{
+  [38;5;121mconst[m std::[38;5;121msize_t[m len = strlen(GREET) + [95m1[m + strlen(name);
+  [38;5;121mchar[m *msg = [93mnew[m [38;5;121mchar[m[len + [95m1[m];
+  strcpy(msg, GREET); strcat(msg, [95m" "[m); strcat(msg, name);
+  [93mreturn[m msg;
+}
+
+[38;5;121mint[m
+main([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])
+{
+  [93mif[m (argc == [95m1[m) {
+    std::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;
+    std::exit([95m1[m);
+  }
+  [93melse[m {
+    [93mfor[m ([38;5;121mint[m i = [95m1[m; i < argc; i++) [46m{[m[25;7Hstd::cout << greetMsg(argv[i]) << std::endl;
+    [46m}[m
+  }
+}
+[94m~                                                                               [30;1H~                                                                               [31;1H~                                                                               [32;1H~                                                                               [33;1H~                                                                               [34;1H~                                                                               [35;1H~                                                                               [36;1H~                                                                               [37;1H~                                                                               [38;1H~                                                                               [39;1H~                                                                               [m[40;63H24,36[9CAll[24;36H[?25h[?25l{[26;5H}[40;64H1,17[21;17H[?25h[?25l[40;63H8,8  [8;8H[?25h[?25l[18;1H[46m{[28;1H}[m[40;63H28,1[28;1H[?25h[?25l[40;53H2[28;2H[18;1H{[28;1H[48;5;242m}[m[40;1H[1m-- VISUAL --[m[40;53H[K[40;53H2[28;2H[40;63H28,2[10CAll[28;2H[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[27;2H[1;39r[39;1H
+[1;40r[39;1H[94m~                                                                               [m[40;53H[K[40;53H2[27;2H[40;63H28,2[10CBot[27;2H[?25h[?25l[26;2H[1;39r[39;1H
+[1;40r[39;1H[94m~                                                                               [m[40;53H[K[40;53H2[26;2H[40;63H28,2[10CBot[26;2H[?25h[?25l[25;2H[1;39r[39;1H
+[1;40r[39;1H[94m~                                                                               [m[40;53H[K[40;53H2[25;2H[40;63H28,2[10CBot[25;2H[?25h[?25l[24;2H[1;39r[39;1H
+[1;40r[39;1H[94m~                                                                               [m[40;53H[K[40;53H2[24;2H[40;63H28,2[10CBot[24;2H[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[?25h[?25l[40;53H4[21;21Hr[48;5;242meetMsg(argv[i]) << std::endl; 
+    } 
+  } [m[40;64H5,21[21;21H[?25h[?25l[40;53H7[18;4H
+[48;5;242m  [m[93m[48;5;242melse[m[48;5;242m { 
+    [m[93m[48;5;242mfor[m[48;5;242m ([m[38;5;121m[48;5;242mint[m[48;5;242m i = [m[95m[48;5;242m1[m[48;5;242m; i < argc; i++) { 
+      std::cout << gr[m[40;64H2,4 [18;4H[?25h[?25l[40;53H9[16;20H[1C[95m[48;5;242mage: "[m[48;5;242m << argv[[m[95m[48;5;242m0[m[48;5;242m] << [m[95m[48;5;242m" NAME..."[m[48;5;242m << std::endl; 
+    std::exit([m[95m[48;5;242m1[m[48;5;242m); 
+  } [m[40;64H0,20[16;20H[?25h[?25l[40;53H15[10;2H
+[48;5;242m [m
+[38;5;121m[48;5;242mint[m[48;5;242m  
+main([m[38;5;121m[48;5;242mint[m[48;5;242m argc, [m[38;5;121m[48;5;242mconst[m[48;5;242m [m[38;5;121m[48;5;242mchar[m[48;5;242m *argv[]) 
+{ 
+  [m[93m[48;5;242mif[m[48;5;242m (argc == [m[95m[48;5;242m1[m[48;5;242m) { 
+    std::cerr << [m[95m[48;5;242m"us[m[40;63H14,2 [10;2H[?25h[?25l[40;54H6[9;14H
+[48;5;242m} [m[40;64H3,14[9;14H[?25h[?25l[40;54H7[8;21H;[48;5;242m strcat(msg, [m[95m[48;5;242m" "[m[48;5;242m); strcat(msg, name); 
+  [m[93m[48;5;242mreturn[m[48;5;242m msg; [m[40;64H2,21[8;21H[?25h[?25l[40;54H8[7;21H[1C[38;5;121m[48;5;242mr[m[48;5;242m[len + [m[95m[48;5;242m1[m[48;5;242m]; 
+  strcpy(msg, GREET);[m[40;64H1[7;21H[?25h[?25l[40;54H9[6;22He[48;5;242mn = strlen(GREET) + [m[95m[48;5;242m1[m[48;5;242m + strlen(name); 
+  [m[38;5;121m[48;5;242mchar[m[48;5;242m *msg = [m[93m[48;5;242mnew[m[48;5;242m [m[38;5;121m[48;5;242mcha[m[40;64H0,22[6;22H[?25h[?25l[40;53H20[5;2H
+[48;5;242m  [m[38;5;121m[48;5;242mconst[m[48;5;242m std::[m[38;5;121m[48;5;242msize_t[m[48;5;242m le[m[40;63H9,2  [5;2H[?25h[?25l[40;54H1[4;22Hn[48;5;242mame) 
+{ [m[40;63H8,22[4;22H[?25h[?25l[40;54H2[3;20H
+[48;5;242mgreetMsg([m[38;5;121m[48;5;242mconst[m[48;5;242m [m[38;5;121m[48;5;242mchar[m[48;5;242m *n[m[40;63H7,20[3;20H[?25h[?25l[40;54H3[2;1H
+[38;5;121m[48;5;242mstatic[m[48;5;242m [m[38;5;121m[48;5;242mconst[m[48;5;242m [m[38;5;121m[48;5;242mchar[m[48;5;242m * [m[40;63H6,0-1[2;1H[?25h[?25l[40;54H4[2;22H[1;39r[1;1H[L[1;40r[3;1H[48;5;242m [m[40;53H[K[40;53H24[2;22H[40;63H5,22[10CBot[2;22H[?25h[?25l[40;54H5[2;1H[1;39r[1;1H[L[1;40r[1;1H[38;5;81m#include [m[95m<cstring>[m
+
+[38;5;81m[48;5;242m#define GREET [m[95m[48;5;242m"hello"[m[48;5;242m [m[40;53H[K[40;53H25[2;1H[40;63H4,0-1[9CBot[2;1H[?25h[?25l[?25h[?25l[40;53H  [17;18H[3;1H[38;5;81m#define GREET [m[95m"hello"[m[3;22H[K[4;1H[K[5;1H[38;5;121mstatic[m [38;5;121mconst[m [38;5;121mchar[m *[5;20H[K[6;1HgreetMsg([38;5;121mconst[m [38;5;121mchar[m *name)[6;27H[K[7;1H{[7;2H[K[8;1H  [38;5;121mconst[m std::[38;5;121msize_t[m len = strlen(GREET) + [95m1[m + strlen(name);[8;60H[K[9;1H  [38;5;121mchar[m *msg = [93mnew[m [38;5;121mchar[m[len + [95m1[m];[9;33H[K[10;1H  strcpy(msg, GREET); strcat(msg, [95m" "[m); strcat(msg, name);[10;59H[K[11;1H  [93mreturn[m msg;[11;14H[K[12;1H}[12;2H[K[13;1H[K[14;1H[38;5;121mint[m [14;5H[K[15;1Hmain([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])[15;35H[K[16;1H{[16;2H[K[17;1H  [93mif[m (argc == [95m1[m) [46m{[m[17;19H[K[18;1H    std::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;[18;66H[K[19;1H    std::exit([95m1[m);[19;18H[K[20;1H  [46m}[m[20;4H[K[21;1H  [93melse[m {[21;9H[K[22;1H    [93mfor[m ([38;5;121mint[m i = [95m1[m; i < argc; i++) {[22;37H[K[23;1H      std::cout << greetMsg(argv[i]) << std::endl;[23;51H[K[24;1H    }[24;6H[K[25;1H  }[25;4H[K[26;1H}[40;1H[K[40;63H19,18[9CBot[17;18H[?25h[?25l[10;29H[46m([8C)[m[17;18H{[20;3H}[40;64H2,29[10;29H[?25h[?25l([8C)[40;64H3,13[11;13H[?25h[?25l[40;64H1,32[9;32H[?25h[?25l[40;64H2,58[10;58H[?25h[?25l[40;53Hi[10;58H[40;53H [10;58H[40;1H[1m-- INSERT --[m[40;63H[K[40;63H12,58[9CBot[10;58H[?25h[?25l[40;67H9[10;59H[?25h[?25l[11;39r[11;1H[L[1;40r[40;63H[K[40;63H13,3[10CBot]2;greet.cc + (~/projects/i240a/work/lab3/exercises/2-greet) - VIM]1;greet.cc[11;3H[?25h[?25ld[40;66H4[11;4H[?25h[?25le[40;66H5[11;5H[?25h[?25ll[40;66H6[11;6H[?25h[?25le[40;66H7[11;7H[?25h[?25lt[40;66H8[11;8H[?25h[?25l[40;66H9[11;9H[?25h[?25l*[40;66H10[11;10H[?25h[?25lm[40;67H1[11;11H[?25h[?25ls[40;67H2[11;12H[?25h[?25lg[40;67H3[11;13H[?25h[?25l;[40;67H4[11;14H[?25h[40;1H[K[11;13H[?25l[40;53H^[[11;13H[40;53H  [11;14H[40;63H13,13[9CBot[11;13H[?25h[?25l[40;53H:[11;13H[40;53H[K[40;1H:[?2004h[?25hw[?25l[?25hq[?25l[?25h[?25l[?1006l[?1002l[?2004l"greet.cc" 29L, 572C written]2;Terminal - ]1;Terminal - [23;2t[23;1t[22;2t[22;1t[23;2t[23;1t
+[?2004l[?1l>[?25h[?1049l[23;0;0tqxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ make -f ../Makefile 
+g++ -g -Wall -std=c++17    greet.cc   -o greet
+[01m[Kgreet.cc:[m[K In function ‘[01m[Kconst char* greetMsg(const char*)[m[K’:
+[01m[Kgreet.cc:13:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kdelet[m[K’ was not declared in this scope
+   [01;31m[Kdelet[m[K *msg;
+   [01;31m[K^~~~~[m[K
+[01m[Kgreet.cc:13:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kselect[m[K’
+   [01;36m[Kdelet[m[K *msg;
+   [01;36m[K^~~~~[m[K
+   [32m[Kselect[m[K
+make: *** [<builtin>: greet] Error 1
+qxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ v[Kmake -f ../Makefile [7Pvim greet.cc[C
+[?1000h[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;40r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[40;1H"greet.cc" 29L, 572C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;1H[35m#include [m[31m<iostream>[m
+[35m#include [m[31m<cstdlib>[m
+[35m#include [m[31m<cstring>[m
+
+[35m#define GREET [m[31m"hello"[m
+
+[32mstatic[m [32mconst[m [32mchar[m *
+greetMsg([32mconst[m [32mchar[m *name)
+{
+  [32mconst[m std::[32msize_t[m len = strlen(GREET) + [31m1[m + strlen(name);
+  [32mchar[m *msg = [38;5;130mnew[m [32mchar[m[len + [31m1[m];
+  strcpy(msg, GREET); strcat(msg, [31m" "[m); strcat(msg, name);
+  delet *msg;
+  [38;5;130mreturn[m msg;
+}
+
+[32mint[m
+main([32mint[m argc, [32mconst[m [32mchar[m *argv[])
+{
+  [38;5;130mif[m (argc == [31m1[m) {
+    std::cerr << [31m"usage: "[m << argv[[31m0[m] << [31m" NAME..."[m << std::endl;
+    std::exit([31m1[m);
+  }
+  [38;5;130melse[m {
+    [38;5;130mfor[m ([32mint[m i = [31m1[m; i < argc; i++) {[26;7Hstd::cout << greetMsg(argv[i]) << std::endl;
+    }
+  }
+}
+[94m~                                                                               [31;1H~                                                                               [32;1H~                                                                               [33;1H~                                                                               [34;1H~                                                                               [35;1H~                                                                               [36;1H~                                                                               [37;1H~                                                                               [38;1H~                                                                               [39;1H~                                                                               [m[40;63H13,13[9CAll]2;greet.cc (~/projects/i240a/work/lab3/exercises/2-greet) - VIM]1;greet.cc[13;13H[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?1000l[?1006h[?1002h[?1006l[?1002l[?1006h[?1002h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m#include [m[95m<iostream>[m
+[38;5;81m#include [m[95m<cstdlib>[m
+[38;5;81m#include [m[95m<cstring>[m
+
+[38;5;81m#define GREET [m[95m"hello"[m
+
+[38;5;121mstatic[m [38;5;121mconst[m [38;5;121mchar[m *
+greetMsg([38;5;121mconst[m [38;5;121mchar[m *name)
+{
+  [38;5;121mconst[m std::[38;5;121msize_t[m len = strlen(GREET) + [95m1[m + strlen(name);
+  [38;5;121mchar[m *msg = [93mnew[m [38;5;121mchar[m[len + [95m1[m];
+  strcpy(msg, GREET); strcat(msg, [95m" "[m); strcat(msg, name);
+  delet *msg;
+  [93mreturn[m msg;
+}
+
+[38;5;121mint[m
+main([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])
+{
+  [93mif[m (argc == [95m1[m) {
+    std::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;
+    std::exit([95m1[m);
+  }
+  [93melse[m {
+    [93mfor[m ([38;5;121mint[m i = [95m1[m; i < argc; i++) {[26;7Hstd::cout << greetMsg(argv[i]) << std::endl;
+    }
+  }
+}
+[94m~                                                                               [31;1H~                                                                               [32;1H~                                                                               [33;1H~                                                                               [34;1H~                                                                               [35;1H~                                                                               [36;1H~                                                                               [37;1H~                                                                               [38;1H~                                                                               [39;1H~                                                                               [m[40;63H13,13[9CAll"greet.cc" 29L, 572C[13;13H[?25h[?25l[40;53Hi[13;13H[40;53H [13;13H[40;1H[1m-- INSERT --[m[40;13H[K[40;63H13,13[9CAll[13;13H[?25h[?25l[40;66H8 [13;8H[?25h[?25l  [93mdelete[m *msg;[40;66H9]2;greet.cc + (~/projects/i240a/work/lab3/exercises/2-greet) - VIM]1;greet.cc[13;9H[?25h[40;1H[K[13;8H[?25l[40;53H^[[13;8H[40;53H  [13;9H[40;63H13,8[10CAll[13;8H[?25h[?25l[40;53H:[13;8H[40;53H[K[40;1H:[?2004h[?25hw[?25l[?25hq[?25l[?25h[?25l[?1006l[?1002l[?2004l"greet.cc" 29L, 573C written]2;Terminal - ]1;Terminal - [23;2t[23;1t[22;2t[22;1t[23;2t[23;1t
+[?2004l[?1l>[?25h[?1049l[23;0;0tqxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ vim greet.cc [7@make -f ../Makefile[C
+g++ -g -Wall -std=c++17    greet.cc   -o greet
+[01m[Kgreet.cc:[m[K In function ‘[01m[Kconst char* greetMsg(const char*)[m[K’:
+[01m[Kgreet.cc:13:11:[m[K [01;31m[Kerror: [m[Ktype ‘[01m[Kchar[m[K’ argument given to ‘[01m[Kdelete[m[K’, expected pointer
+   delete *[01;31m[Kmsg[m[K;
+           [01;31m[K^~~[m[K
+make: *** [<builtin>: greet] Error 1
+qxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ make -f ../Makefile [7Pvim greet.cc[C
+[?1000h[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;40r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[40;1H"greet.cc" 29L, 573C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;1H[35m#include [m[31m<iostream>[m
+[35m#include [m[31m<cstdlib>[m
+[35m#include [m[31m<cstring>[m
+
+[35m#define GREET [m[31m"hello"[m
+
+[32mstatic[m [32mconst[m [32mchar[m *
+greetMsg([32mconst[m [32mchar[m *name)
+{
+  [32mconst[m std::[32msize_t[m len = strlen(GREET) + [31m1[m + strlen(name);
+  [32mchar[m *msg = [38;5;130mnew[m [32mchar[m[len + [31m1[m];
+  strcpy(msg, GREET); strcat(msg, [31m" "[m); strcat(msg, name);
+  [38;5;130mdelete[m *msg;
+  [38;5;130mreturn[m msg;
+}
+
+[32mint[m
+main([32mint[m argc, [32mconst[m [32mchar[m *argv[])
+{
+  [38;5;130mif[m (argc == [31m1[m) {
+    std::cerr << [31m"usage: "[m << argv[[31m0[m] << [31m" NAME..."[m << std::endl;
+    std::exit([31m1[m);
+  }
+  [38;5;130melse[m {
+    [38;5;130mfor[m ([32mint[m i = [31m1[m; i < argc; i++) {[26;7Hstd::cout << greetMsg(argv[i]) << std::endl;
+    }
+  }
+}
+[94m~                                                                               [31;1H~                                                                               [32;1H~                                                                               [33;1H~                                                                               [34;1H~                                                                               [35;1H~                                                                               [36;1H~                                                                               [37;1H~                                                                               [38;1H~                                                                               [39;1H~                                                                               [m[40;63H13,8[10CAll]2;greet.cc (~/projects/i240a/work/lab3/exercises/2-greet) - VIM]1;greet.cc[13;8H[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?1000l[?1006h[?1002h[?1006l[?1002l[?1006h[?1002h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m#include [m[95m<iostream>[m
+[38;5;81m#include [m[95m<cstdlib>[m
+[38;5;81m#include [m[95m<cstring>[m
+
+[38;5;81m#define GREET [m[95m"hello"[m
+
+[38;5;121mstatic[m [38;5;121mconst[m [38;5;121mchar[m *
+greetMsg([38;5;121mconst[m [38;5;121mchar[m *name)
+{
+  [38;5;121mconst[m std::[38;5;121msize_t[m len = strlen(GREET) + [95m1[m + strlen(name);
+  [38;5;121mchar[m *msg = [93mnew[m [38;5;121mchar[m[len + [95m1[m];
+  strcpy(msg, GREET); strcat(msg, [95m" "[m); strcat(msg, name);
+  [93mdelete[m *msg;
+  [93mreturn[m msg;
+}
+
+[38;5;121mint[m
+main([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])
+{
+  [93mif[m (argc == [95m1[m) {
+    std::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;
+    std::exit([95m1[m);
+  }
+  [93melse[m {
+    [93mfor[m ([38;5;121mint[m i = [95m1[m; i < argc; i++) {[26;7Hstd::cout << greetMsg(argv[i]) << std::endl;
+    }
+  }
+}
+[94m~                                                                               [31;1H~                                                                               [32;1H~                                                                               [33;1H~                                                                               [34;1H~                                                                               [35;1H~                                                                               [36;1H~                                                                               [37;1H~                                                                               [38;1H~                                                                               [39;1H~                                                                               [m[40;63H13,8[10CAll"greet.cc" 29L, 573C[13;8H[?25h[?25l[40;66H11[13;11H[?25h[?25l[40;53Hi[13;11H[40;53H [13;11H[40;1H[1m-- INSERT --[m[40;13H[K[40;63H13,11[9CAll[13;11H[?25h[?25lmsg;[13;14H[K[40;67H0]2;greet.cc + (~/projects/i240a/work/lab3/exercises/2-greet) - VIM]1;greet.cc[13;10H[?25h[40;1H[K[13;9H[?25l[40;53H^[[13;9H[40;53H  [13;10H[40;63H13,9[10CAll[13;9H[?25h[?25l[40;53H:[13;9H[40;53H[K[40;1H:[?2004h[?25hw[?25l[?25hq[?25l[?25h[?25l[?1006l[?1002l[?2004l"greet.cc" 29L, 572C written]2;Terminal - ]1;Terminal - [23;2t[23;1t[22;2t[22;1t[23;2t[23;1t
+[?2004l[?1l>[?25h[?1049l[23;0;0tqxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ vim greet.cc [7@make -f ../Makefile[C
+g++ -g -Wall -std=c++17    greet.cc   -o greet
+cat </dev/null >.gitignore
+for t in greet; do echo $t >>.gitignore; done
+qxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ v[Kmake -f ../Makefile [7Pvim greet.cc[C[7@make -f ../Makefile[C[7Pvim greet.cc[C[7@make -f ../Makefile[C[7Pvim greet.cc[Calgrind ./greet michael bern [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Caind ./greet michael bern[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cind ./greet michael bern [K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kn
+==128635== Memcheck, a memory error detector
+==128635== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==128635== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==128635== Command: ./greet michael bern
+==128635== 
+==128635== Mismatched free() / delete / delete []
+==128635==    at 0x483708B: operator delete(void*, unsigned long) (vg_replace_malloc.c:585)
+==128635==    by 0x10924A: greetMsg(char const*) (greet.cc:13)
+==128635==    by 0x1092E9: main (greet.cc:26)
+==128635==  Address 0x4d74c80 is 0 bytes inside a block of size 14 alloc'd
+==128635==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==128635==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==128635==    by 0x1092E9: main (greet.cc:26)
+==128635== 
+==128635== Invalid read of size 1
+==128635==    at 0x4838CC2: __strlen_sse2 (vg_replace_strmem.c:462)
+==128635==    by 0x4989E38: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128635==    by 0x1092F8: main (greet.cc:26)
+==128635==  Address 0x4d74c80 is 0 bytes inside a block of size 14 free'd
+==128635==    at 0x483708B: operator delete(void*, unsigned long) (vg_replace_malloc.c:585)
+==128635==    by 0x10924A: greetMsg(char const*) (greet.cc:13)
+==128635==    by 0x1092E9: main (greet.cc:26)
+==128635==  Block was alloc'd at
+==128635==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==128635==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==128635==    by 0x1092E9: main (greet.cc:26)
+==128635== 
+==128635== Invalid read of size 1
+==128635==    at 0x4838CD4: __strlen_sse2 (vg_replace_strmem.c:462)
+==128635==    by 0x4989E38: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128635==    by 0x1092F8: main (greet.cc:26)
+==128635==  Address 0x4d74c81 is 1 bytes inside a block of size 14 free'd
+==128635==    at 0x483708B: operator delete(void*, unsigned long) (vg_replace_malloc.c:585)
+==128635==    by 0x10924A: greetMsg(char const*) (greet.cc:13)
+==128635==    by 0x1092E9: main (greet.cc:26)
+==128635==  Block was alloc'd at
+==128635==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==128635==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==128635==    by 0x1092E9: main (greet.cc:26)
+==128635== 
+==128635== Invalid read of size 1
+==128635==    at 0x4C1A847: _IO_default_xsputn (genops.c:399)
+==128635==    by 0x4C1A847: _IO_default_xsputn (genops.c:370)
+==128635==    by 0x4C18AD0: _IO_new_file_xsputn (fileops.c:1272)
+==128635==    by 0x4C18AD0: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1204)
+==128635==    by 0x4C0DAE7: fwrite (iofwrite.c:39)
+==128635==    by 0x4989B33: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128635==    by 0x4989E46: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128635==    by 0x1092F8: main (greet.cc:26)
+==128635==  Address 0x4d74c80 is 0 bytes inside a block of size 14 free'd
+==128635==    at 0x483708B: operator delete(void*, unsigned long) (vg_replace_malloc.c:585)
+==128635==    by 0x10924A: greetMsg(char const*) (greet.cc:13)
+==128635==    by 0x1092E9: main (greet.cc:26)
+==128635==  Block was alloc'd at
+==128635==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==128635==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==128635==    by 0x1092E9: main (greet.cc:26)
+==128635== 
+hello michael
+==128635== Invalid read of size 1
+==128635==    at 0x4C18A25: _IO_new_file_xsputn (fileops.c:1226)
+==128635==    by 0x4C18A25: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1204)
+==128635==    by 0x4C0DAE7: fwrite (iofwrite.c:39)
+==128635==    by 0x4989B33: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128635==    by 0x4989E46: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128635==    by 0x1092F8: main (greet.cc:26)
+==128635==  Address 0x4d75119 is 9 bytes inside a block of size 11 free'd
+==128635==    at 0x483708B: operator delete(void*, unsigned long) (vg_replace_malloc.c:585)
+==128635==    by 0x10924A: greetMsg(char const*) (greet.cc:13)
+==128635==    by 0x1092E9: main (greet.cc:26)
+==128635==  Block was alloc'd at
+==128635==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==128635==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==128635==    by 0x1092E9: main (greet.cc:26)
+==128635== 
+==128635== Invalid read of size 1
+==128635==    at 0x4C18A3C: _IO_new_file_xsputn (fileops.c:1226)
+==128635==    by 0x4C18A3C: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1204)
+==128635==    by 0x4C0DAE7: fwrite (iofwrite.c:39)
+==128635==    by 0x4989B33: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128635==    by 0x4989E46: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128635==    by 0x1092F8: main (greet.cc:26)
+==128635==  Address 0x4d75118 is 8 bytes inside a block of size 11 free'd
+==128635==    at 0x483708B: operator delete(void*, unsigned long) (vg_replace_malloc.c:585)
+==128635==    by 0x10924A: greetMsg(char const*) (greet.cc:13)
+==128635==    by 0x1092E9: main (greet.cc:26)
+==128635==  Block was alloc'd at
+==128635==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==128635==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==128635==    by 0x1092E9: main (greet.cc:26)
+==128635== 
+==128635== Invalid read of size 1
+==128635==    at 0x483D528: mempcpy (vg_replace_strmem.c:1536)
+==128635==    by 0x4C189E4: _IO_new_file_xsputn (fileops.c:1243)
+==128635==    by 0x4C189E4: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1204)
+==128635==    by 0x4C0DAE7: fwrite (iofwrite.c:39)
+==128635==    by 0x4989B33: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128635==    by 0x4989E46: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128635==    by 0x1092F8: main (greet.cc:26)
+==128635==  Address 0x4d75110 is 0 bytes inside a block of size 11 free'd
+==128635==    at 0x483708B: operator delete(void*, unsigned long) (vg_replace_malloc.c:585)
+==128635==    by 0x10924A: greetMsg(char const*) (greet.cc:13)
+==128635==    by 0x1092E9: main (greet.cc:26)
+==128635==  Block was alloc'd at
+==128635==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==128635==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==128635==    by 0x1092E9: main (greet.cc:26)
+==128635== 
+==128635== Invalid read of size 1
+==128635==    at 0x483D536: mempcpy (vg_replace_strmem.c:1536)
+==128635==    by 0x4C189E4: _IO_new_file_xsputn (fileops.c:1243)
+==128635==    by 0x4C189E4: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1204)
+==128635==    by 0x4C0DAE7: fwrite (iofwrite.c:39)
+==128635==    by 0x4989B33: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128635==    by 0x4989E46: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128635==    by 0x1092F8: main (greet.cc:26)
+==128635==  Address 0x4d75112 is 2 bytes inside a block of size 11 free'd
+==128635==    at 0x483708B: operator delete(void*, unsigned long) (vg_replace_malloc.c:585)
+==128635==    by 0x10924A: greetMsg(char const*) (greet.cc:13)
+==128635==    by 0x1092E9: main (greet.cc:26)
+==128635==  Block was alloc'd at
+==128635==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==128635==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==128635==    by 0x1092E9: main (greet.cc:26)
+==128635== 
+hello bern
+==128635== 
+==128635== HEAP SUMMARY:
+==128635==     in use at exit: 0 bytes in 0 blocks
+==128635==   total heap usage: 4 allocs, 4 frees, 73,753 bytes allocated
+==128635== 
+==128635== All heap blocks were freed -- no leaks are possible
+==128635== 
+==128635== For counts of detected and suppressed errors, rerun with: -v
+==128635== ERROR SUMMARY: 60 errors from 8 contexts (suppressed: 0 from 0)
+qxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ vim[K[K[Kvalgrind ./greet michael bern [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[9Pmake -f ../Makefile 
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[7Pvim greet.cc[C
+[?1000h[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;40r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[40;1H"greet.cc" 29L, 572C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;1H[35m#include [m[31m<iostream>[m
+[35m#include [m[31m<cstdlib>[m
+[35m#include [m[31m<cstring>[m
+
+[35m#define GREET [m[31m"hello"[m
+
+[32mstatic[m [32mconst[m [32mchar[m *
+greetMsg([32mconst[m [32mchar[m *name)
+{
+  [32mconst[m std::[32msize_t[m len = strlen(GREET) + [31m1[m + strlen(name);
+  [32mchar[m *msg = [38;5;130mnew[m [32mchar[m[len + [31m1[m];
+  strcpy(msg, GREET); strcat(msg, [31m" "[m); strcat(msg, name);
+  [38;5;130mdelete[m msg;
+  [38;5;130mreturn[m msg;
+}
+
+[32mint[m
+main([32mint[m argc, [32mconst[m [32mchar[m *argv[])
+{
+  [38;5;130mif[m (argc == [31m1[m) {
+    std::cerr << [31m"usage: "[m << argv[[31m0[m] << [31m" NAME..."[m << std::endl;
+    std::exit([31m1[m);
+  }
+  [38;5;130melse[m {
+    [38;5;130mfor[m ([32mint[m i = [31m1[m; i < argc; i++) {[26;7Hstd::cout << greetMsg(argv[i]) << std::endl;
+    }
+  }
+}
+[94m~                                                                               [31;1H~                                                                               [32;1H~                                                                               [33;1H~                                                                               [34;1H~                                                                               [35;1H~                                                                               [36;1H~                                                                               [37;1H~                                                                               [38;1H~                                                                               [39;1H~                                                                               [m[40;63H13,9[10CAll]2;greet.cc (~/projects/i240a/work/lab3/exercises/2-greet) - VIM]1;greet.cc[13;9H[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?1000l[?1006h[?1002h[?1006l[?1002l[?1006h[?1002h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m#include [m[95m<iostream>[m
+[38;5;81m#include [m[95m<cstdlib>[m
+[38;5;81m#include [m[95m<cstring>[m
+
+[38;5;81m#define GREET [m[95m"hello"[m
+
+[38;5;121mstatic[m [38;5;121mconst[m [38;5;121mchar[m *
+greetMsg([38;5;121mconst[m [38;5;121mchar[m *name)
+{
+  [38;5;121mconst[m std::[38;5;121msize_t[m len = strlen(GREET) + [95m1[m + strlen(name);
+  [38;5;121mchar[m *msg = [93mnew[m [38;5;121mchar[m[len + [95m1[m];
+  strcpy(msg, GREET); strcat(msg, [95m" "[m); strcat(msg, name);
+  [93mdelete[m msg;
+  [93mreturn[m msg;
+}
+
+[38;5;121mint[m
+main([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])
+{
+  [93mif[m (argc == [95m1[m) {
+    std::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;
+    std::exit([95m1[m);
+  }
+  [93melse[m {
+    [93mfor[m ([38;5;121mint[m i = [95m1[m; i < argc; i++) {[26;7Hstd::cout << greetMsg(argv[i]) << std::endl;
+    }
+  }
+}
+[94m~                                                                               [31;1H~                                                                               [32;1H~                                                                               [33;1H~                                                                               [34;1H~                                                                               [35;1H~                                                                               [36;1H~                                                                               [37;1H~                                                                               [38;1H~                                                                               [39;1H~                                                                               [m[40;63H13,9[10CAll"greet.cc" 29L, 572C[13;9H[?25h[?25l[40;64H4,8[14;8H[?25h[?25l[40;64H3,9[13;9H[?25h[?25l[40;53Hi[13;9H[40;53H [13;9H[40;1H[1m-- INSERT --[m[40;13H[K[40;63H13,9[10CAll[13;9H[?25h[?25l[ msg[97m[101m;[14;13H;
+}[19;1H{[20;18H{[21;65H;[22;17H;
+[m  [97m[101m}[24;8H{[25;36H{[26;50H;
+[m    [97m[101m}
+[m  [97m[101m}
+}[m[40;66H10]2;greet.cc + (~/projects/i240a/work/lab3/exercises/2-greet) - VIM]1;greet.cc[13;10H[?25h[?25l] msg;[14;13H;
+}[19;1H{[20;18H{[21;65H;[22;17H;
+  }[24;8H{[25;36H{[26;50H;
+    }
+  }
+}[13;9H[46m[][m[40;67H1[13;11H[?25h[40;1H[K[13;10H[?25l[40;53H^[[13;10H[40;53H  [13;11H[40;63H13,10[9CAll[13;10H[?25h[?25l[40;53H:[13;10H[40;53H[K[40;1H:[?2004h[?25hw[?25l[?25hq[?25l[?25h[?25l[?1006l[?1002l[?2004l"greet.cc" 29L, 574C written]2;Terminal - ]1;Terminal - [23;2t[23;1t[22;2t[22;1t[23;2t[23;1t
+[?2004l[?1l>[?25h[?1049l[23;0;0tqxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ vim greet.cc algrind ./greet michael bern [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[9Pmake -f ../Makefile 
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+g++ -g -Wall -std=c++17    greet.cc   -o greet
+cat </dev/null >.gitignore
+for t in greet; do echo $t >>.gitignore; done
+qxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ make -f ../Makefile [7Pvim greet.cc[Calgrind ./greet michael bern [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kn
+==128763== Memcheck, a memory error detector
+==128763== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==128763== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==128763== Command: ./greet michael bern
+==128763== 
+==128763== Invalid read of size 1
+==128763==    at 0x4838CC2: __strlen_sse2 (vg_replace_strmem.c:462)
+==128763==    by 0x4989E38: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128763==    by 0x1092FA: main (greet.cc:26)
+==128763==  Address 0x4d74c80 is 0 bytes inside a block of size 14 free'd
+==128763==    at 0x483758B: operator delete[](void*) (vg_replace_malloc.c:641)
+==128763==    by 0x10924C: greetMsg(char const*) (greet.cc:13)
+==128763==    by 0x1092EB: main (greet.cc:26)
+==128763==  Block was alloc'd at
+==128763==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==128763==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==128763==    by 0x1092EB: main (greet.cc:26)
+==128763== 
+==128763== Invalid read of size 1
+==128763==    at 0x4838CD4: __strlen_sse2 (vg_replace_strmem.c:462)
+==128763==    by 0x4989E38: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128763==    by 0x1092FA: main (greet.cc:26)
+==128763==  Address 0x4d74c81 is 1 bytes inside a block of size 14 free'd
+==128763==    at 0x483758B: operator delete[](void*) (vg_replace_malloc.c:641)
+==128763==    by 0x10924C: greetMsg(char const*) (greet.cc:13)
+==128763==    by 0x1092EB: main (greet.cc:26)
+==128763==  Block was alloc'd at
+==128763==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==128763==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==128763==    by 0x1092EB: main (greet.cc:26)
+==128763== 
+==128763== Invalid read of size 1
+==128763==    at 0x4C1A847: _IO_default_xsputn (genops.c:399)
+==128763==    by 0x4C1A847: _IO_default_xsputn (genops.c:370)
+==128763==    by 0x4C18AD0: _IO_new_file_xsputn (fileops.c:1272)
+==128763==    by 0x4C18AD0: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1204)
+==128763==    by 0x4C0DAE7: fwrite (iofwrite.c:39)
+==128763==    by 0x4989B33: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128763==    by 0x4989E46: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128763==    by 0x1092FA: main (greet.cc:26)
+==128763==  Address 0x4d74c80 is 0 bytes inside a block of size 14 free'd
+==128763==    at 0x483758B: operator delete[](void*) (vg_replace_malloc.c:641)
+==128763==    by 0x10924C: greetMsg(char const*) (greet.cc:13)
+==128763==    by 0x1092EB: main (greet.cc:26)
+==128763==  Block was alloc'd at
+==128763==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==128763==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==128763==    by 0x1092EB: main (greet.cc:26)
+==128763== 
+hello michael
+==128763== Invalid read of size 1
+==128763==    at 0x4C18A25: _IO_new_file_xsputn (fileops.c:1226)
+==128763==    by 0x4C18A25: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1204)
+==128763==    by 0x4C0DAE7: fwrite (iofwrite.c:39)
+==128763==    by 0x4989B33: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128763==    by 0x4989E46: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128763==    by 0x1092FA: main (greet.cc:26)
+==128763==  Address 0x4d75119 is 9 bytes inside a block of size 11 free'd
+==128763==    at 0x483758B: operator delete[](void*) (vg_replace_malloc.c:641)
+==128763==    by 0x10924C: greetMsg(char const*) (greet.cc:13)
+==128763==    by 0x1092EB: main (greet.cc:26)
+==128763==  Block was alloc'd at
+==128763==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==128763==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==128763==    by 0x1092EB: main (greet.cc:26)
+==128763== 
+==128763== Invalid read of size 1
+==128763==    at 0x4C18A3C: _IO_new_file_xsputn (fileops.c:1226)
+==128763==    by 0x4C18A3C: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1204)
+==128763==    by 0x4C0DAE7: fwrite (iofwrite.c:39)
+==128763==    by 0x4989B33: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128763==    by 0x4989E46: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128763==    by 0x1092FA: main (greet.cc:26)
+==128763==  Address 0x4d75118 is 8 bytes inside a block of size 11 free'd
+==128763==    at 0x483758B: operator delete[](void*) (vg_replace_malloc.c:641)
+==128763==    by 0x10924C: greetMsg(char const*) (greet.cc:13)
+==128763==    by 0x1092EB: main (greet.cc:26)
+==128763==  Block was alloc'd at
+==128763==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==128763==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==128763==    by 0x1092EB: main (greet.cc:26)
+==128763== 
+==128763== Invalid read of size 1
+==128763==    at 0x483D528: mempcpy (vg_replace_strmem.c:1536)
+==128763==    by 0x4C189E4: _IO_new_file_xsputn (fileops.c:1243)
+==128763==    by 0x4C189E4: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1204)
+==128763==    by 0x4C0DAE7: fwrite (iofwrite.c:39)
+==128763==    by 0x4989B33: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128763==    by 0x4989E46: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128763==    by 0x1092FA: main (greet.cc:26)
+==128763==  Address 0x4d75110 is 0 bytes inside a block of size 11 free'd
+==128763==    at 0x483758B: operator delete[](void*) (vg_replace_malloc.c:641)
+==128763==    by 0x10924C: greetMsg(char const*) (greet.cc:13)
+==128763==    by 0x1092EB: main (greet.cc:26)
+==128763==  Block was alloc'd at
+==128763==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==128763==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==128763==    by 0x1092EB: main (greet.cc:26)
+==128763== 
+==128763== Invalid read of size 1
+==128763==    at 0x483D536: mempcpy (vg_replace_strmem.c:1536)
+==128763==    by 0x4C189E4: _IO_new_file_xsputn (fileops.c:1243)
+==128763==    by 0x4C189E4: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1204)
+==128763==    by 0x4C0DAE7: fwrite (iofwrite.c:39)
+==128763==    by 0x4989B33: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128763==    by 0x4989E46: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==128763==    by 0x1092FA: main (greet.cc:26)
+==128763==  Address 0x4d75112 is 2 bytes inside a block of size 11 free'd
+==128763==    at 0x483758B: operator delete[](void*) (vg_replace_malloc.c:641)
+==128763==    by 0x10924C: greetMsg(char const*) (greet.cc:13)
+==128763==    by 0x1092EB: main (greet.cc:26)
+==128763==  Block was alloc'd at
+==128763==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==128763==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==128763==    by 0x1092EB: main (greet.cc:26)
+==128763== 
+hello bern
+==128763== 
+==128763== HEAP SUMMARY:
+==128763==     in use at exit: 0 bytes in 0 blocks
+==128763==   total heap usage: 4 allocs, 4 frees, 73,753 bytes allocated
+==128763== 
+==128763== All heap blocks were freed -- no leaks are possible
+==128763== 
+==128763== For counts of detected and suppressed errors, rerun with: -v
+==128763== ERROR SUMMARY: 58 errors from 7 contexts (suppressed: 0 from 0)
+qxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ clear
+[H[2J[3Jqxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ clearvalgrind ./greet michael bern [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[9Pmake -f ../Makefile 
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[7Pvim greet.cc[C
+[?1000h[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;40r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[40;1H"greet.cc" 29L, 574C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;1H[35m#include [m[31m<iostream>[m
+[35m#include [m[31m<cstdlib>[m
+[35m#include [m[31m<cstring>[m
+
+[35m#define GREET [m[31m"hello"[m
+
+[32mstatic[m [32mconst[m [32mchar[m *
+greetMsg([32mconst[m [32mchar[m *name)
+{
+  [32mconst[m std::[32msize_t[m len = strlen(GREET) + [31m1[m + strlen(name);
+  [32mchar[m *msg = [38;5;130mnew[m [32mchar[m[len + [31m1[m];
+  strcpy(msg, GREET); strcat(msg, [31m" "[m); strcat(msg, name);
+  [38;5;130mdelete[m[106m[][m msg;
+  [38;5;130mreturn[m msg;
+}
+
+[32mint[m
+main([32mint[m argc, [32mconst[m [32mchar[m *argv[])
+{
+  [38;5;130mif[m (argc == [31m1[m) {
+    std::cerr << [31m"usage: "[m << argv[[31m0[m] << [31m" NAME..."[m << std::endl;
+    std::exit([31m1[m);
+  }
+  [38;5;130melse[m {
+    [38;5;130mfor[m ([32mint[m i = [31m1[m; i < argc; i++) {[26;7Hstd::cout << greetMsg(argv[i]) << std::endl;
+    }
+  }
+}
+[94m~                                                                               [31;1H~                                                                               [32;1H~                                                                               [33;1H~                                                                               [34;1H~                                                                               [35;1H~                                                                               [36;1H~                                                                               [37;1H~                                                                               [38;1H~                                                                               [39;1H~                                                                               [m[40;63H13,10[9CAll]2;greet.cc (~/projects/i240a/work/lab3/exercises/2-greet) - VIM]1;greet.cc[13;10H[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?1000l[?1006h[?1002h[?1006l[?1002l[?1006h[?1002h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m#include [m[95m<iostream>[m
+[38;5;81m#include [m[95m<cstdlib>[m
+[38;5;81m#include [m[95m<cstring>[m
+
+[38;5;81m#define GREET [m[95m"hello"[m
+
+[38;5;121mstatic[m [38;5;121mconst[m [38;5;121mchar[m *
+greetMsg([38;5;121mconst[m [38;5;121mchar[m *name)
+{
+  [38;5;121mconst[m std::[38;5;121msize_t[m len = strlen(GREET) + [95m1[m + strlen(name);
+  [38;5;121mchar[m *msg = [93mnew[m [38;5;121mchar[m[len + [95m1[m];
+  strcpy(msg, GREET); strcat(msg, [95m" "[m); strcat(msg, name);
+  [93mdelete[m[46m[][m msg;
+  [93mreturn[m msg;
+}
+
+[38;5;121mint[m
+main([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])
+{
+  [93mif[m (argc == [95m1[m) {
+    std::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;
+    std::exit([95m1[m);
+  }
+  [93melse[m {
+    [93mfor[m ([38;5;121mint[m i = [95m1[m; i < argc; i++) {[26;7Hstd::cout << greetMsg(argv[i]) << std::endl;
+    }
+  }
+}
+[94m~                                                                               [31;1H~                                                                               [32;1H~                                                                               [33;1H~                                                                               [34;1H~                                                                               [35;1H~                                                                               [36;1H~                                                                               [37;1H~                                                                               [38;1H~                                                                               [39;1H~                                                                               [m[40;63H13,10[9CAll"greet.cc" 29L, 574C[13;10H[?25h[?25l[][40;67H1[13;11H[?25h[?25l[40;67H5[13;15H[?25h[?25l[40;64H4,13[14;13H[?25h[?25l[40;64H3,15[13;15H[?25h[?25l[40;53Hi[13;15H[40;53H [13;15H[40;1H[1m-- INSERT --[m[40;13H[K[40;63H13,15[9CAll[13;15H[?25h[?25l[40;67H6[13;16H[?25h[?25l[13;15H[K[40;67H5]2;greet.cc + (~/projects/i240a/work/lab3/exercises/2-greet) - VIM]1;greet.cc[13;15H[?25h[?25l[13;14H[K[40;67H4[13;14H[?25h[?25l[13;13H[K[40;67H3[13;13H[?25h[?25l[13;12H[K[40;67H2[13;12H[?25h[?25l[46m[][m[40;67H1[13;11H[?25h[?25l[13;10H[K[14;13H[97m[101m;
+}[19;1H{[20;18H{[21;65H;[22;17H;
+[m  [97m[101m}[24;8H{[25;36H{[26;50H;
+[m    [97m[101m}
+[m  [97m[101m}
+}[m[13;9H[[40;67H0[13;10H[?25h[?25l[13;9H[K[14;13H;
+}[19;1H{[20;18H{[21;65H;[22;17H;
+  }[24;8H{[25;36H{[26;50H;
+    }
+  }
+}[40;66H9 [13;9H[?25h[?25l  delet[13;8H[K[40;66H8[13;8H[?25h[?25l[13;7H[K[40;66H7[13;7H[?25h[?25l[13;6H[K[40;66H6[13;6H[?25h[?25l[13;5H[K[40;66H5[13;5H[?25h[?25l[13;4H[K[40;66H4[13;4H[?25h[?25l[13;3H[K[40;66H3[13;3H[?25h[?25l[40;66H2[13;2H[?25h[?25l[40;66H1[13;1H[?25h[?25l[12;39r[39;1H
+[1;40r[12;3Hstrcpy(msg, GREET); strcat(msg, [95m" "[m); strcat(msg, name);[39;1H[94m~                                                                               [m[40;63H[K[40;63H12,59[9CAll[12;59H[?25h[?25l[9;1H[46m{[14;1H}[m[40;63H9,2  [9;2H[?25h[?25l{[14;1H}[40;63H13,14[13;14H[?25h[?25l[14;39r[14;1H[L[1;40r[40;63H[K[40;63H14,3[10CAll[14;3H[?25h[?25ld[40;66H4[14;4H[?25h[?25le[40;66H5[14;5H[?25h[?25ll[40;66H6[14;6H[?25h[?25le[40;66H7[14;7H[?25h[?25lt[40;66H8[14;8H[?25h[?25l  [93mdelete[m[40;66H9[14;9H[?25h[?25l[40;66H10[14;10H[?25h[?25l[40;66H9 [14;9H[?25h[?25l[
+[97m[101m}[19;1H{[20;18H{[21;65H;[22;17H;
+[m  [97m[101m}[24;8H{[25;36H{[26;50H;
+[m    [97m[101m}
+[m  [97m[101m}
+}[m[40;66H10[14;10H[?25h[?25l]
+}[19;1H{[20;18H{[21;65H;[22;17H;
+  }[24;8H{[25;36H{[26;50H;
+    }
+  }
+}[14;9H[46m[][m[40;67H1[14;11H[?25h[?25l[][40;67H2[14;12H[?25h[?25lm[40;67H3[14;13H[?25h[?25ls[40;67H4[14;14H[?25h[?25lg[40;67H5[14;15H[?25h[?25l;[40;67H6[14;16H[?25h[40;1H[K[14;15H[?25l[40;53H^[[14;15H[40;53H  [14;16H[40;63H14,15[9CAll[14;15H[?25h[?25l[40;53H:[14;15H[40;53H[K[40;1H:[?2004h[?25hw[?25l[?25hq[?25l[?25h[?25l[?1006l[?1002l[?2004l"greet.cc" 29L, 574C written]2;Terminal - ]1;Terminal - [23;2t[23;1t[22;2t[22;1t[23;2t[23;1t
+[?2004l[?1l>[?25h[?1049l[23;0;0tqxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ vim greet.cc [8Pclearvalgrind ./greet michael bern [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[9Pmake -f ../Makefile 
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+g++ -g -Wall -std=c++17    greet.cc   -o greet
+cat </dev/null >.gitignore
+for t in greet; do echo $t >>.gitignore; done
+qxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ make -f ../Makefile [7Pvim greet.cc[C[8Pclearvalgrind ./greet michael bern [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kn
+==129102== Memcheck, a memory error detector
+==129102== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==129102== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==129102== Command: ./greet michael bern
+==129102== 
+hello michael
+hello bern
+==129102== 
+==129102== HEAP SUMMARY:
+==129102==     in use at exit: 25 bytes in 2 blocks
+==129102==   total heap usage: 4 allocs, 2 frees, 73,753 bytes allocated
+==129102== 
+==129102== LEAK SUMMARY:
+==129102==    definitely lost: 25 bytes in 2 blocks
+==129102==    indirectly lost: 0 bytes in 0 blocks
+==129102==      possibly lost: 0 bytes in 0 blocks
+==129102==    still reachable: 0 bytes in 0 blocks
+==129102==         suppressed: 0 bytes in 0 blocks
+==129102== Rerun with --leak-check=full to see details of leaked memory
+==129102== 
+==129102== For counts of detected and suppressed errors, rerun with: -v
+==129102== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+qxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ valgrind ./greet michael bern [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[9Pmake -f ../Makefile 
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[7Pvim greet.cc[C
+[?1000h[?2004h[?1049h[22;0;0t[?1h=[?2004h[1;40r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[40;1H"greet.cc" 29L, 574C[2;1H▽[6n[2;1H  [1;1H[>c]10;?]11;?[1;1H[35m#include [m[31m<iostream>[m
+[35m#include [m[31m<cstdlib>[m
+[35m#include [m[31m<cstring>[m
+
+[35m#define GREET [m[31m"hello"[m
+
+[32mstatic[m [32mconst[m [32mchar[m *
+greetMsg([32mconst[m [32mchar[m *name)
+{
+  [32mconst[m std::[32msize_t[m len = strlen(GREET) + [31m1[m + strlen(name);
+  [32mchar[m *msg = [38;5;130mnew[m [32mchar[m[len + [31m1[m];
+  strcpy(msg, GREET); strcat(msg, [31m" "[m); strcat(msg, name);
+  [38;5;130mreturn[m msg;
+  [38;5;130mdelete[m[] msg;
+}
+
+[32mint[m
+main([32mint[m argc, [32mconst[m [32mchar[m *argv[])
+{
+  [38;5;130mif[m (argc == [31m1[m) {
+    std::cerr << [31m"usage: "[m << argv[[31m0[m] << [31m" NAME..."[m << std::endl;
+    std::exit([31m1[m);
+  }
+  [38;5;130melse[m {
+    [38;5;130mfor[m ([32mint[m i = [31m1[m; i < argc; i++) {[26;7Hstd::cout << greetMsg(argv[i]) << std::endl;
+    }
+  }
+}
+[94m~                                                                               [31;1H~                                                                               [32;1H~                                                                               [33;1H~                                                                               [34;1H~                                                                               [35;1H~                                                                               [36;1H~                                                                               [37;1H~                                                                               [38;1H~                                                                               [39;1H~                                                                               [m[40;63H14,15[9CAll]2;greet.cc (~/projects/i240a/work/lab3/exercises/2-greet) - VIM]1;greet.cc[14;15H[?25hP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?1000l[?1006h[?1002h[?1006l[?1002l[?1006h[?1002h[27m[23m[29m[m[H[2J[?25l[1;1H[38;5;81m#include [m[95m<iostream>[m
+[38;5;81m#include [m[95m<cstdlib>[m
+[38;5;81m#include [m[95m<cstring>[m
+
+[38;5;81m#define GREET [m[95m"hello"[m
+
+[38;5;121mstatic[m [38;5;121mconst[m [38;5;121mchar[m *
+greetMsg([38;5;121mconst[m [38;5;121mchar[m *name)
+{
+  [38;5;121mconst[m std::[38;5;121msize_t[m len = strlen(GREET) + [95m1[m + strlen(name);
+  [38;5;121mchar[m *msg = [93mnew[m [38;5;121mchar[m[len + [95m1[m];
+  strcpy(msg, GREET); strcat(msg, [95m" "[m); strcat(msg, name);
+  [93mreturn[m msg;
+  [93mdelete[m[] msg;
+}
+
+[38;5;121mint[m
+main([38;5;121mint[m argc, [38;5;121mconst[m [38;5;121mchar[m *argv[])
+{
+  [93mif[m (argc == [95m1[m) {
+    std::cerr << [95m"usage: "[m << argv[[95m0[m] << [95m" NAME..."[m << std::endl;
+    std::exit([95m1[m);
+  }
+  [93melse[m {
+    [93mfor[m ([38;5;121mint[m i = [95m1[m; i < argc; i++) {[26;7Hstd::cout << greetMsg(argv[i]) << std::endl;
+    }
+  }
+}
+[94m~                                                                               [31;1H~                                                                               [32;1H~                                                                               [33;1H~                                                                               [34;1H~                                                                               [35;1H~                                                                               [36;1H~                                                                               [37;1H~                                                                               [38;1H~                                                                               [39;1H~                                                                               [m[40;63H14,15[9CAll"greet.cc" 29L, 574C[14;15H[?25h[?25l[40;53Hi[14;15H[40;53H [14;15H[40;1H[1m-- INSERT --[m[40;13H[K[40;63H14,15[9CAll[14;15H[?25h[?25l[40;67H6[14;16H[?25h[?25l[14;15H[K[40;67H5]2;greet.cc + (~/projects/i240a/work/lab3/exercises/2-greet) - VIM]1;greet.cc[14;15H[?25h[?25l[14;14H[K[40;67H4[14;14H[?25h[?25l[14;13H[K[40;67H3[14;13H[?25h[?25l[14;12H[K[40;67H2[14;12H[?25h[?25l[46m[][m[40;67H1[14;11H[?25h[?25l[14;10H[K[15;1H[97m[101m}[19;1H{[20;18H{[21;65H;[22;17H;
+[m  [97m[101m}[24;8H{[25;36H{[26;50H;
+[m    [97m[101m}
+[m  [97m[101m}
+}[m[14;9H[[40;67H0[14;10H[?25h[?25l[14;9H[K[15;1H}[19;1H{[20;18H{[21;65H;[22;17H;
+  }[24;8H{[25;36H{[26;50H;
+    }
+  }
+}[40;66H9 [14;9H[?25h[?25l  delet[14;8H[K[40;66H8[14;8H[?25h[?25l[14;7H[K[40;66H7[14;7H[?25h[?25l[14;6H[K[40;66H6[14;6H[?25h[?25l[14;5H[K[40;66H5[14;5H[?25h[?25l[14;4H[K[40;66H4[14;4H[?25h[?25l[14;3H[K[40;66H3[14;3H[?25h[?25l[40;66H2[14;2H[?25h[?25l[40;66H1[14;1H[?25h[?25l[13;39r[39;1H
+[1;40r[13;3H[93mreturn[m msg;[39;1H[94m~                                                                               [m[40;63H[K[40;63H13,14[9CAll[13;14H[?25h[?25l[40;64H2,59[12;59H[?25h[?25l[13;39r[13;1H[L[1;40r[40;63H[K[40;63H13,3[10CAll[13;3H[?25h[?25ld[40;66H4[13;4H[?25h[?25le[40;66H5[13;5H[?25h[?25ll[40;66H6[13;6H[?25h[?25le[40;66H7[13;7H[?25h[?25lt[40;66H8[13;8H[?25h[?25l  [93mdelete[m[40;66H9[13;9H[?25h[?25l[[14;13H[97m[101m;
+}[19;1H{[20;18H{[21;65H;[22;17H;
+[m  [97m[101m}[24;8H{[25;36H{[26;50H;
+[m    [97m[101m}
+[m  [97m[101m}
+}[m[40;66H10[13;10H[?25h[?25l][14;13H;
+}[19;1H{[20;18H{[21;65H;[22;17H;
+  }[24;8H{[25;36H{[26;50H;
+    }
+  }
+}[13;9H[46m[][m[40;67H1[13;11H[?25h[?25l[][40;67H2[13;12H[?25h[?25lm[40;67H3[13;13H[?25h[?25ls[40;67H4[13;14H[?25h[?25lg[40;67H5[13;15H[?25h[?25l;[40;67H6[13;16H[?25h[40;1H[K[13;15H[?25l[40;53H^[[13;15H[40;53H  [13;16H[40;63H13,15[9CAll[13;15H[?25h[?25l[40;53H:[13;15H[40;53H[K[40;1H:[?2004h[?25hw[?25l[?25hq[?25l[?25h[?25l[?1006l[?1002l[?2004l"greet.cc" 29L, 574C written]2;Terminal - ]1;Terminal - [23;2t[23;1t[22;2t[22;1t[23;2t[23;1t
+[?2004l[?1l>[?25h[?1049l[23;0;0tqxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ vim greet.cc algrind ./greet michael bern [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[9Pmake -f ../Makefile 
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+g++ -g -Wall -std=c++17    greet.cc   -o greet
+cat </dev/null >.gitignore
+for t in greet; do echo $t >>.gitignore; done
+qxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ make -f ../Makefile [7Pvim greet.cc[C[7@make -f ../Makefile[C[7Pvim greet.cc[Calgrind ./greet michael bern [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kn
+==129227== Memcheck, a memory error detector
+==129227== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==129227== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==129227== Command: ./greet michael bern
+==129227== 
+==129227== Invalid read of size 1
+==129227==    at 0x4838CC2: __strlen_sse2 (vg_replace_strmem.c:462)
+==129227==    by 0x4989E38: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129227==    by 0x1092FA: main (greet.cc:26)
+==129227==  Address 0x4d74c80 is 0 bytes inside a block of size 14 free'd
+==129227==    at 0x483758B: operator delete[](void*) (vg_replace_malloc.c:641)
+==129227==    by 0x10924C: greetMsg(char const*) (greet.cc:13)
+==129227==    by 0x1092EB: main (greet.cc:26)
+==129227==  Block was alloc'd at
+==129227==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==129227==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==129227==    by 0x1092EB: main (greet.cc:26)
+==129227== 
+==129227== Invalid read of size 1
+==129227==    at 0x4838CD4: __strlen_sse2 (vg_replace_strmem.c:462)
+==129227==    by 0x4989E38: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129227==    by 0x1092FA: main (greet.cc:26)
+==129227==  Address 0x4d74c81 is 1 bytes inside a block of size 14 free'd
+==129227==    at 0x483758B: operator delete[](void*) (vg_replace_malloc.c:641)
+==129227==    by 0x10924C: greetMsg(char const*) (greet.cc:13)
+==129227==    by 0x1092EB: main (greet.cc:26)
+==129227==  Block was alloc'd at
+==129227==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==129227==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==129227==    by 0x1092EB: main (greet.cc:26)
+==129227== 
+==129227== Invalid read of size 1
+==129227==    at 0x4C1A847: _IO_default_xsputn (genops.c:399)
+==129227==    by 0x4C1A847: _IO_default_xsputn (genops.c:370)
+==129227==    by 0x4C18AD0: _IO_new_file_xsputn (fileops.c:1272)
+==129227==    by 0x4C18AD0: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1204)
+==129227==    by 0x4C0DAE7: fwrite (iofwrite.c:39)
+==129227==    by 0x4989B33: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129227==    by 0x4989E46: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129227==    by 0x1092FA: main (greet.cc:26)
+==129227==  Address 0x4d74c80 is 0 bytes inside a block of size 14 free'd
+==129227==    at 0x483758B: operator delete[](void*) (vg_replace_malloc.c:641)
+==129227==    by 0x10924C: greetMsg(char const*) (greet.cc:13)
+==129227==    by 0x1092EB: main (greet.cc:26)
+==129227==  Block was alloc'd at
+==129227==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==129227==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==129227==    by 0x1092EB: main (greet.cc:26)
+==129227== 
+hello michael
+==129227== Invalid read of size 1
+==129227==    at 0x4C18A25: _IO_new_file_xsputn (fileops.c:1226)
+==129227==    by 0x4C18A25: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1204)
+==129227==    by 0x4C0DAE7: fwrite (iofwrite.c:39)
+==129227==    by 0x4989B33: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129227==    by 0x4989E46: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129227==    by 0x1092FA: main (greet.cc:26)
+==129227==  Address 0x4d75119 is 9 bytes inside a block of size 11 free'd
+==129227==    at 0x483758B: operator delete[](void*) (vg_replace_malloc.c:641)
+==129227==    by 0x10924C: greetMsg(char const*) (greet.cc:13)
+==129227==    by 0x1092EB: main (greet.cc:26)
+==129227==  Block was alloc'd at
+==129227==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==129227==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==129227==    by 0x1092EB: main (greet.cc:26)
+==129227== 
+==129227== Invalid read of size 1
+==129227==    at 0x4C18A3C: _IO_new_file_xsputn (fileops.c:1226)
+==129227==    by 0x4C18A3C: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1204)
+==129227==    by 0x4C0DAE7: fwrite (iofwrite.c:39)
+==129227==    by 0x4989B33: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129227==    by 0x4989E46: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129227==    by 0x1092FA: main (greet.cc:26)
+==129227==  Address 0x4d75118 is 8 bytes inside a block of size 11 free'd
+==129227==    at 0x483758B: operator delete[](void*) (vg_replace_malloc.c:641)
+==129227==    by 0x10924C: greetMsg(char const*) (greet.cc:13)
+==129227==    by 0x1092EB: main (greet.cc:26)
+==129227==  Block was alloc'd at
+==129227==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==129227==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==129227==    by 0x1092EB: main (greet.cc:26)
+==129227== 
+==129227== Invalid read of size 1
+==129227==    at 0x483D528: mempcpy (vg_replace_strmem.c:1536)
+==129227==    by 0x4C189E4: _IO_new_file_xsputn (fileops.c:1243)
+==129227==    by 0x4C189E4: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1204)
+==129227==    by 0x4C0DAE7: fwrite (iofwrite.c:39)
+==129227==    by 0x4989B33: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129227==    by 0x4989E46: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129227==    by 0x1092FA: main (greet.cc:26)
+==129227==  Address 0x4d75110 is 0 bytes inside a block of size 11 free'd
+==129227==    at 0x483758B: operator delete[](void*) (vg_replace_malloc.c:641)
+==129227==    by 0x10924C: greetMsg(char const*) (greet.cc:13)
+==129227==    by 0x1092EB: main (greet.cc:26)
+==129227==  Block was alloc'd at
+==129227==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==129227==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==129227==    by 0x1092EB: main (greet.cc:26)
+==129227== 
+==129227== Invalid read of size 1
+==129227==    at 0x483D536: mempcpy (vg_replace_strmem.c:1536)
+==129227==    by 0x4C189E4: _IO_new_file_xsputn (fileops.c:1243)
+==129227==    by 0x4C189E4: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1204)
+==129227==    by 0x4C0DAE7: fwrite (iofwrite.c:39)
+==129227==    by 0x4989B33: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129227==    by 0x4989E46: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129227==    by 0x1092FA: main (greet.cc:26)
+==129227==  Address 0x4d75112 is 2 bytes inside a block of size 11 free'd
+==129227==    at 0x483758B: operator delete[](void*) (vg_replace_malloc.c:641)
+==129227==    by 0x10924C: greetMsg(char const*) (greet.cc:13)
+==129227==    by 0x1092EB: main (greet.cc:26)
+==129227==  Block was alloc'd at
+==129227==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==129227==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==129227==    by 0x1092EB: main (greet.cc:26)
+==129227== 
+hello bern
+==129227== 
+==129227== HEAP SUMMARY:
+==129227==     in use at exit: 0 bytes in 0 blocks
+==129227==   total heap usage: 4 allocs, 4 frees, 73,753 bytes allocated
+==129227== 
+==129227== All heap blocks were freed -- no leaks are possible
+==129227== 
+==129227== For counts of detected and suppressed errors, rerun with: -v
+==129227== ERROR SUMMARY: 58 errors from 7 contexts (suppressed: 0 from 0)
+qxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ clear
+[H[2J[3Jqxiong1@g7-17:~/i240a/work/lab3/exercises/2-greet$ clearvalgrind ./greet michael bern [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kn
+==129233== Memcheck, a memory error detector
+==129233== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==129233== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==129233== Command: ./greet michael bern
+==129233== 
+==129233== Invalid read of size 1
+==129233==    at 0x4838CC2: __strlen_sse2 (vg_replace_strmem.c:462)
+==129233==    by 0x4989E38: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129233==    by 0x1092FA: main (greet.cc:26)
+==129233==  Address 0x4d74c80 is 0 bytes inside a block of size 14 free'd
+==129233==    at 0x483758B: operator delete[](void*) (vg_replace_malloc.c:641)
+==129233==    by 0x10924C: greetMsg(char const*) (greet.cc:13)
+==129233==    by 0x1092EB: main (greet.cc:26)
+==129233==  Block was alloc'd at
+==129233==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==129233==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==129233==    by 0x1092EB: main (greet.cc:26)
+==129233== 
+==129233== Invalid read of size 1
+==129233==    at 0x4838CD4: __strlen_sse2 (vg_replace_strmem.c:462)
+==129233==    by 0x4989E38: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129233==    by 0x1092FA: main (greet.cc:26)
+==129233==  Address 0x4d74c81 is 1 bytes inside a block of size 14 free'd
+==129233==    at 0x483758B: operator delete[](void*) (vg_replace_malloc.c:641)
+==129233==    by 0x10924C: greetMsg(char const*) (greet.cc:13)
+==129233==    by 0x1092EB: main (greet.cc:26)
+==129233==  Block was alloc'd at
+==129233==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==129233==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==129233==    by 0x1092EB: main (greet.cc:26)
+==129233== 
+==129233== Invalid read of size 1
+==129233==    at 0x4C1A847: _IO_default_xsputn (genops.c:399)
+==129233==    by 0x4C1A847: _IO_default_xsputn (genops.c:370)
+==129233==    by 0x4C18AD0: _IO_new_file_xsputn (fileops.c:1272)
+==129233==    by 0x4C18AD0: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1204)
+==129233==    by 0x4C0DAE7: fwrite (iofwrite.c:39)
+==129233==    by 0x4989B33: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129233==    by 0x4989E46: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129233==    by 0x1092FA: main (greet.cc:26)
+==129233==  Address 0x4d74c80 is 0 bytes inside a block of size 14 free'd
+==129233==    at 0x483758B: operator delete[](void*) (vg_replace_malloc.c:641)
+==129233==    by 0x10924C: greetMsg(char const*) (greet.cc:13)
+==129233==    by 0x1092EB: main (greet.cc:26)
+==129233==  Block was alloc'd at
+==129233==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==129233==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==129233==    by 0x1092EB: main (greet.cc:26)
+==129233== 
+hello michael
+==129233== Invalid read of size 1
+==129233==    at 0x4C18A25: _IO_new_file_xsputn (fileops.c:1226)
+==129233==    by 0x4C18A25: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1204)
+==129233==    by 0x4C0DAE7: fwrite (iofwrite.c:39)
+==129233==    by 0x4989B33: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129233==    by 0x4989E46: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129233==    by 0x1092FA: main (greet.cc:26)
+==129233==  Address 0x4d75119 is 9 bytes inside a block of size 11 free'd
+==129233==    at 0x483758B: operator delete[](void*) (vg_replace_malloc.c:641)
+==129233==    by 0x10924C: greetMsg(char const*) (greet.cc:13)
+==129233==    by 0x1092EB: main (greet.cc:26)
+==129233==  Block was alloc'd at
+==129233==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==129233==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==129233==    by 0x1092EB: main (greet.cc:26)
+==129233== 
+==129233== Invalid read of size 1
+==129233==    at 0x4C18A3C: _IO_new_file_xsputn (fileops.c:1226)
+==129233==    by 0x4C18A3C: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1204)
+==129233==    by 0x4C0DAE7: fwrite (iofwrite.c:39)
+==129233==    by 0x4989B33: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129233==    by 0x4989E46: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129233==    by 0x1092FA: main (greet.cc:26)
+==129233==  Address 0x4d75118 is 8 bytes inside a block of size 11 free'd
+==129233==    at 0x483758B: operator delete[](void*) (vg_replace_malloc.c:641)
+==129233==    by 0x10924C: greetMsg(char const*) (greet.cc:13)
+==129233==    by 0x1092EB: main (greet.cc:26)
+==129233==  Block was alloc'd at
+==129233==    at 0x483650F: operator new[](unsigned long) (vg_replace_malloc.c:423)
+==129233==    by 0x1091E4: greetMsg(char const*) (greet.cc:11)
+==129233==    by 0x1092EB: main (greet.cc:26)
+==129233== 
+==129233== Invalid read of size 1
+==129233==    at 0x483D528: mempcpy (vg_replace_strmem.c:1536)
+==129233==    by 0x4C189E4: _IO_new_file_xsputn (fileops.c:1243)
+==129233==    by 0x4C189E4: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1204)
+==129233==    by 0x4C0DAE7: fwrite (iofwrite.c:39)
+==129233==    by 0x4989B33: std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129233==    by 0x4989E46: std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.25)
+==129233==    by 0x1092FA: main (greet.cc:26)
+==129233==  Address 0x4d75110 is 0 bytes inside a block of size 11 free'd
+==129233==    at 0x483758B: operator delete[](void*) (vg_replace_malloc.c:641)
+==129233==    by 0x10924C: greetMsg(char const*) (greet.cc:13)
+==129233==    by 0x1092EB: main (greet.cc:26)
+==129233==  Block was alloc'd at
+==129233==    at 0x483
